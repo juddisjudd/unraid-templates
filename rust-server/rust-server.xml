@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>rust-server</Name>
+  <Repository>indifferentbroccoli/rust-server-docker:latest</Repository>
+  <Registry>https://hub.docker.com/r/indifferentbroccoli/rust-server-docker</Registry>
+  <Network>bridge</Network>
+  <MyIP/>
+  <Shell>sh</Shell>
+  <Privileged>false</Privileged>
+  <Support/>
+  <Project/>
+  <Overview>A Docker container for running a Rust dedicated server.</Overview>
+  <Category>GameServers:</Category>
+  <WebUI/>
+  <TemplateURL/>
+  <Icon/>
+  <ExtraParams/>
+  <PostArgs/>
+  <CPUset/>
+  <DateInstalled/>
+  <DonateText/>
+  <DonateLink/>
+  <Requires/>
+  <Config Name="PUID" Target="PUID" Default="99" Mode="" Description="User ID for file permissions" Type="Variable" Display="always" Required="false" Mask="false">99</Config>
+  <Config Name="PGID" Target="PGID" Default="100" Mode="" Description="Group ID for file permissions" Type="Variable" Display="always" Required="false" Mask="false">100</Config>
+  <Config Name="SERVER_NAME" Target="SERVER_NAME" Default="RustServer" Mode="" Description="Display name of the server" Type="Variable" Display="always" Required="true" Mask="false">RustServer</Config>
+  <Config Name="SERVER_DESCRIPTION" Target="SERVER_DESCRIPTION" Default="Welcome to the server" Mode="" Description="Server Description" Type="Variable" Display="always" Required="false" Mask="false">Welcome to the server</Config>
+  <Config Name="RCON_PASSWORD" Target="RCON_PASSWORD" Default="" Mode="" Description="Required password for RCON" Type="Variable" Display="always" Required="true" Mask="true"/>
+  <Config Name="MAX_PLAYERS" Target="MAX_PLAYERS" Default="50" Mode="" Description="Max players" Type="Variable" Display="always" Required="false" Mask="false">50</Config>
+  <Config Name="WORLD_SIZE" Target="WORLD_SIZE" Default="3500" Mode="" Description="World Size (1000 - 6000)" Type="Variable" Display="always" Required="false" Mask="false">3500</Config>
+  <Config Name="SERVER_SEED" Target="SERVER_SEED" Default="12345" Mode="" Description="World Seed" Type="Variable" Display="always" Required="false" Mask="false">12345</Config>
+  <Config Name="Game Port" Target="28015" Default="28015" Mode="tcp" Description="" Type="Port" Display="always" Required="true" Mask="false">28015</Config>
+  <Config Name="Game Port UDP" Target="28015" Default="28015" Mode="udp" Description="" Type="Port" Display="always" Required="true" Mask="false">28015</Config>
+  <Config Name="RCON Port" Target="28016" Default="28016" Mode="tcp" Description="" Type="Port" Display="always" Required="true" Mask="false">28016</Config>
+  <Config Name="App Port" Target="28082" Default="28082" Mode="tcp" Description="" Type="Port" Display="always" Required="false" Mask="false">28082</Config>
+  <Config Name="Server Files" Target="/steamcmd/rust" Default="/mnt/user/appdata/rust" Mode="rw" Description="Rust server files" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/rust</Config>
+</Container>

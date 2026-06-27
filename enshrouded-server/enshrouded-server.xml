@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>enshrouded-server</Name>
+  <Repository>indifferentbroccoli/enshrouded-server-docker:latest</Repository>
+  <Registry>https://hub.docker.com/r/indifferentbroccoli/enshrouded-server-docker</Registry>
+  <Network>bridge</Network>
+  <MyIP/>
+  <Shell>sh</Shell>
+  <Privileged>false</Privileged>
+  <Support/>
+  <Project/>
+  <Overview>A Docker container for running an Enshrouded dedicated server.</Overview>
+  <Category>GameServers:</Category>
+  <WebUI/>
+  <TemplateURL/>
+  <Icon/>
+  <ExtraParams/>
+  <PostArgs/>
+  <CPUset/>
+  <DateInstalled/>
+  <DonateText/>
+  <DonateLink/>
+  <Requires/>
+  <Config Name="PUID" Target="PUID" Default="99" Mode="" Description="User ID for file permissions" Type="Variable" Display="always" Required="false" Mask="false">99</Config>
+  <Config Name="PGID" Target="PGID" Default="100" Mode="" Description="Group ID for file permissions" Type="Variable" Display="always" Required="false" Mask="false">100</Config>
+  <Config Name="SERVER_NAME" Target="SERVER_NAME" Default="EnshroudedServer" Mode="" Description="Display name of the server" Type="Variable" Display="always" Required="true" Mask="false">EnshroudedServer</Config>
+  <Config Name="SERVER_PASSWORD" Target="SERVER_PASSWORD" Default="" Mode="" Description="Optional password to join the server" Type="Variable" Display="always" Required="false" Mask="true"/>
+  <Config Name="UPDATE_ON_START" Target="UPDATE_ON_START" Default="true" Mode="" Description="Update server files on start" Type="Variable" Display="advanced" Required="false" Mask="false">true</Config>
+  <Config Name="Game Port" Target="15636" Default="15636" Mode="udp" Description="" Type="Port" Display="always" Required="true" Mask="false">15636</Config>
+  <Config Name="Query Port" Target="15637" Default="15637" Mode="udp" Description="" Type="Port" Display="always" Required="true" Mask="false">15637</Config>
+  <Config Name="Server Files" Target="/enshrouded" Default="/mnt/user/appdata/enshrouded" Mode="rw" Description="Enshrouded server files and config" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/enshrouded</Config>
+</Container>

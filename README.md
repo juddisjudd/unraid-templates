@@ -7,6 +7,10 @@ A collection of custom Docker templates for Unraid's Community Applications.
 | Template | Category | Description |
 |---|---|---|
 | **RuneScape: DragonWilds** | `GameServers` | A Docker container for running a RuneScape: DragonWilds dedicated server. |
+| **Valheim** | `GameServers` | A Docker container for running a Valheim dedicated server. |
+| **Rust** | `GameServers` | A Docker container for running a Rust dedicated server. |
+| **Enshrouded** | `GameServers` | A Docker container for running an Enshrouded dedicated server. |
+| **Hytale** | `GameServers` | A Docker container for running a Hytale dedicated server. |
 
 ## Installation / How to Use
 
@@ -29,3 +33,7 @@ Feel free to submit an issue or pull request if you have any suggestions, improv
 
 Special thanks to the original creators of the Docker images used in these templates:
 - **RuneScape: DragonWilds**: Docker image provided by [indifferentbroccoli](https://github.com/indifferentbroccoli/runescape-dragonwilds-server-docker) ([Docker Hub](https://hub.docker.com/r/indifferentbroccoli/runescape-dragonwilds-server-docker)).
+- **Valheim**: Docker image provided by [indifferentbroccoli](https://github.com/indifferentbroccoli/valheim-server-docker) ([Docker Hub](https://hub.docker.com/r/indifferentbroccoli/valheim-server-docker)).
+- **Rust**: Docker image provided by [indifferentbroccoli](https://github.com/indifferentbroccoli/rust-server-docker) ([Docker Hub](https://hub.docker.com/r/indifferentbroccoli/rust-server-docker)).
+- **Enshrouded**: Docker image provided by [indifferentbroccoli](https://github.com/indifferentbroccoli/enshrouded-server-docker) ([Docker Hub](https://hub.docker.com/r/indifferentbroccoli/enshrouded-server-docker)).
+- **Hytale**: Docker image provided by [indifferentbroccoli](https://github.com/indifferentbroccoli/hytale-server-docker) ([Docker Hub](https://hub.docker.com/r/indifferentbroccoli/hytale-server-docker)).

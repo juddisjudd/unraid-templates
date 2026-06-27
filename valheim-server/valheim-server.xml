@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>valheim-server</Name>
+  <Repository>indifferentbroccoli/valheim-server-docker:latest</Repository>
+  <Registry>https://hub.docker.com/r/indifferentbroccoli/valheim-server-docker</Registry>
+  <Network>bridge</Network>
+  <MyIP/>
+  <Shell>sh</Shell>
+  <Privileged>false</Privileged>
+  <Support/>
+  <Project/>
+  <Overview>A Docker container for running a Valheim dedicated server.</Overview>
+  <Category>GameServers:</Category>
+  <WebUI/>
+  <TemplateURL/>
+  <Icon/>
+  <ExtraParams/>
+  <PostArgs/>
+  <CPUset/>
+  <DateInstalled/>
+  <DonateText/>
+  <DonateLink/>
+  <Requires/>
+  <Config Name="PUID" Target="PUID" Default="99" Mode="" Description="User ID for file permissions" Type="Variable" Display="always" Required="false" Mask="false">99</Config>
+  <Config Name="PGID" Target="PGID" Default="100" Mode="" Description="Group ID for file permissions" Type="Variable" Display="always" Required="false" Mask="false">100</Config>
+  <Config Name="SERVER_NAME" Target="SERVER_NAME" Default="ValheimServer" Mode="" Description="Display name of the server" Type="Variable" Display="always" Required="true" Mask="false">ValheimServer</Config>
+  <Config Name="SERVER_PASSWORD" Target="SERVER_PASSWORD" Default="" Mode="" Description="Required password to join the server" Type="Variable" Display="always" Required="true" Mask="true"/>
+  <Config Name="WORLD_NAME" Target="WORLD_NAME" Default="Dedicated" Mode="" Description="Name of the world" Type="Variable" Display="always" Required="true" Mask="false">Dedicated</Config>
+  <Config Name="PUBLIC" Target="PUBLIC" Default="true" Mode="" Description="Public server (true/false)" Type="Variable" Display="advanced" Required="false" Mask="false">true</Config>
+  <Config Name="CROSSPLAY_ENABLED" Target="CROSSPLAY_ENABLED" Default="true" Mode="" Description="Enable crossplay" Type="Variable" Display="advanced" Required="false" Mask="false">true</Config>
+  <Config Name="PORT" Target="PORT" Default="2456" Mode="" Description="Server port" Type="Variable" Display="advanced" Required="false" Mask="false">2456</Config>
+  <Config Name="Game Port 1" Target="2456" Default="2456" Mode="udp" Description="" Type="Port" Display="always" Required="true" Mask="false">2456</Config>
+  <Config Name="Game Port 2" Target="2457" Default="2457" Mode="udp" Description="" Type="Port" Display="always" Required="true" Mask="false">2457</Config>
+  <Config Name="Server Files" Target="/valheim" Default="/mnt/user/appdata/valheim" Mode="rw" Description="Valheim server files" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/valheim</Config>
+  <Config Name="Server Saves" Target="/valheim-saves" Default="/mnt/user/appdata/valheim/saves" Mode="rw" Description="Valheim saves" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/valheim/saves</Config>
+</Container>
