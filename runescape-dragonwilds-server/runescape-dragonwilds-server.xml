@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>runescape-dragonwilds-server</Name>
+  <Repository>indifferentbroccoli/runescape-dragonwilds-server-docker:latest</Repository>
+  <Registry>https://hub.docker.com/r/indifferentbroccoli/runescape-dragonwilds-server-docker</Registry>
+  <Network>bridge</Network>
+  <MyIP/>
+  <MyMAC/>
+  <Shell>sh</Shell>
+  <Privileged>false</Privileged>
+  <Support/>
+  <Project/>
+  <ReadMe/>
+  <Overview>A Docker container for running a RuneScape: DragonWilds dedicated server using DepotDownloader.</Overview>
+  <Category>GameServers:</Category>
+  <WebUI/>
+  <TemplateURL/>
+  <Icon/>
+  <ExtraParams/>
+  <PostArgs/>
+  <CPUset/>
+  <DateInstalled/>
+  <DonateText/>
+  <DonateLink/>
+  <Requires/>
+  <Config Name="PUID" Target="PUID" Default="99" Mode="" Description="User ID for file permissions" Type="Variable" Display="always" Required="false" Mask="false">99</Config>
+  <Config Name="PGID" Target="PGID" Default="100" Mode="" Description="&#9;Group ID for file permissions" Type="Variable" Display="always" Required="false" Mask="false">100</Config>
+  <Config Name="UPDATE_ON_START" Target="UPDATE_ON_START" Default="true" Mode="" Description="If set to false, skips downloading and validating server files on startup" Type="Variable" Display="always" Required="false" Mask="false">true</Config>
+  <Config Name="OWNER_ID" Target="OWNER_ID" Default="" Mode="" Description="Required. Your RuneScape: DragonWilds Player ID (found in Settings Menu in-game)" Type="Variable" Display="always" Required="true" Mask="false"/>
+  <Config Name="SERVER_NAME" Target="SERVER_NAME" Default="DragonWildsServer" Mode="" Description="Display name of the server" Type="Variable" Display="always" Required="false" Mask="false">DragonWildsServer</Config>
+  <Config Name="DEFAULT_WORLD_NAME" Target="DEFAULT_WORLD_NAME" Default="MyWorld" Mode="" Description="Name of the default world created on first startup" Type="Variable" Display="always" Required="false" Mask="false">MyWorld</Config>
+  <Config Name="ADMIN_PASSWORD" Target="ADMIN_PASSWORD" Default="" Mode="" Description="Required. Password to access Server Management in-game" Type="Variable" Display="always" Required="true" Mask="false"/>
+  <Config Name="WORLD_PASSWORD" Target="WORLD_PASSWORD" Default="" Mode="" Description="Optional join password. Leave empty for a public server" Type="Variable" Display="always" Required="false" Mask="false"/>
+  <Config Name="DEFAULT_PORT" Target="DEFAULT_PORT" Default="7777" Mode="" Description="The UDP port the server listens on" Type="Variable" Display="always" Required="false" Mask="false">7777</Config>
+  <Config Name="MAX_PLAYERS" Target="MAX_PLAYERS" Default="6" Mode="" Description="Maximum number of players allowed on the server" Type="Variable" Display="always" Required="false" Mask="false">6</Config>
+  <Config Name="Server Files" Target="/home/steam/server-files" Default="/mnt/user/appdata/runescape-dragonwilds" Mode="rw" Description="RuneScape DragonWilds server files, saves, and configs" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/runescape-dragonwilds</Config>
+  <Config Name="Game Port" Target="7777" Default="7777" Mode="udp" Description="" Type="Port" Display="always" Required="false" Mask="false">7777</Config>
+  <TailscaleStateDir/>
+</Container>
