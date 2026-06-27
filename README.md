@@ -1,4 +1,4 @@
-# jUnraid Templates
+# Unraid Templates
 
 A collection of custom Docker templates for Unraid's Community Applications.
 
@@ -24,3 +24,8 @@ To use these templates on your Unraid server, you can add this repository to you
 ## Contributing
 
 Feel free to submit an issue or pull request if you have any suggestions, improvements, or new templates you'd like to share!
+
+## Credits
+
+Special thanks to the original creators of the Docker images used in these templates:
+- **RuneScape: DragonWilds**: Docker image provided by [indifferentbroccoli](https://github.com/indifferentbroccoli/runescape-dragonwilds-server-docker) ([Docker Hub](https://hub.docker.com/r/indifferentbroccoli/runescape-dragonwilds-server-docker)).
