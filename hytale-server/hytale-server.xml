@@ -13,7 +13,7 @@
   <Category>GameServers:</Category>
   <WebUI/>
   <TemplateURL/>
-  <Icon/>
+  <Icon>https://raw.githubusercontent.com/juddisjudd/unraid-templates/refs/heads/main/images/hytale.png</Icon>
   <ExtraParams/>
   <PostArgs/>
   <CPUset/>

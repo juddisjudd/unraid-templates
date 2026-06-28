@@ -15,7 +15,7 @@
   <Category>GameServers:</Category>
   <WebUI/>
   <TemplateURL/>
-  <Icon>https://raw.githubusercontent.com/juddisjudd/unraid-templates/refs/heads/main/images/Dragonwilds_Logo.png?token=GHSAT0AAAAAAD2JK6WGTTVW67KVOBVF64C62SAKFCA</Icon>
+  <Icon>https://raw.githubusercontent.com/juddisjudd/unraid-templates/refs/heads/main/images/Dragonwilds_Logo.png</Icon>
   <ExtraParams/>
   <PostArgs/>
   <CPUset/>
