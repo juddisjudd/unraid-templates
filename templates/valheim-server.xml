@@ -5,7 +5,7 @@
   <Registry>https://hub.docker.com/r/indifferentbroccoli/valheim-server-docker</Registry>
   <Network>bridge</Network>
   <MyIP/>
-  <Shell>sh</Shell>
+  <Shell>bash</Shell>
   <Privileged>false</Privileged>
   <Support>https://github.com/juddisjudd/unraid-templates/issues</Support>
   <Project>https://www.valheimgame.com/</Project>
@@ -14,8 +14,6 @@
 
 Set SERVER_PASSWORD before you start the server.
 
-Requirements: 4 CPU cores at 2.8 GHz, 2 GB RAM (more than 4 GB recommended), 2 GB storage.
-
 Forward UDP ports 2456 and 2457 on your router. Valheim uses PORT and PORT + 1. If you change the ports, also change PORT.
 
 The server files are installed on first start. After that, they are only updated if UPDATE_ON_START is true.
@@ -23,7 +21,7 @@ The server files are installed on first start. After that, they are only updated
 Docker image by indifferentbroccoli.</Overview>
   <Category>GameServers:</Category>
   <WebUI/>
-  <TemplateURL>https://raw.githubusercontent.com/juddisjudd/unraid-templates/main/valheim-server/valheim-server.xml</TemplateURL>
+  <TemplateURL>https://raw.githubusercontent.com/juddisjudd/unraid-templates/main/templates/valheim-server.xml</TemplateURL>
   <Icon>https://raw.githubusercontent.com/juddisjudd/unraid-templates/refs/heads/main/images/valheim.png</Icon>
   <ExtraParams>--restart=unless-stopped --stop-timeout=30</ExtraParams>
   <PostArgs/>
@@ -31,7 +29,9 @@ Docker image by indifferentbroccoli.</Overview>
   <DateInstalled/>
   <DonateText>Support me on Ko-fi</DonateText>
   <DonateLink>https://ko-fi.com/ohitsjudd</DonateLink>
-  <Requires/>
+  <Requires>4 CPU cores at 2.8 GHz, 2 GB RAM (more than 4 GB recommended), 2 GB storage.</Requires>
+  <License>GPL-3.0</License>
+  <ExtraSearchTerms>valheim iron gate dedicated server steam bepinex thunderstore crossplay</ExtraSearchTerms>
   <Screenshot>https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/892970/5a31353178f635b67f0c8720ebb8a1a95b637276/ss_5a31353178f635b67f0c8720ebb8a1a95b637276.1920x1080.jpg</Screenshot>
   <Screenshot>https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/892970/bc7c361dab1780543a3ceca50c8fba831e5bc8db/ss_bc7c361dab1780543a3ceca50c8fba831e5bc8db.1920x1080.jpg</Screenshot>
   <Screenshot>https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/892970/ss_a600a7d4ca954543e22f571a9629521a13f82143.1920x1080.jpg</Screenshot>

@@ -5,7 +5,7 @@
   <Registry>https://hub.docker.com/r/indifferentbroccoli/hytale-server-docker</Registry>
   <Network>bridge</Network>
   <MyIP/>
-  <Shell>sh</Shell>
+  <Shell>bash</Shell>
   <Privileged>false</Privileged>
   <Support>https://github.com/juddisjudd/unraid-templates/issues</Support>
   <Project>https://hytale.com/</Project>
@@ -14,7 +14,7 @@
 
 First start: you must sign in with your Hytale account. Open the container log, go to the URL that it shows, and sign in. When the server has started, the log shows a second link. Open it and authorize again.
 
-Requirements: 4 CPU cores, 4 GB RAM (8 GB recommended), 10 GB storage. View distance has the largest effect on RAM use. Set MAX_MEMORY to match the RAM you give the server.
+View distance has the largest effect on RAM use. Set MAX_MEMORY to match the RAM you give the server.
 
 Hytale uses QUIC over UDP. Forward UDP port 5520 on your router. If you change the port, also change DEFAULT_PORT.
 
@@ -23,7 +23,7 @@ To install mods, put .jar or .zip files in the mods folder of the server files a
 Docker image by indifferentbroccoli.</Overview>
   <Category>GameServers:</Category>
   <WebUI/>
-  <TemplateURL>https://raw.githubusercontent.com/juddisjudd/unraid-templates/main/hytale-server/hytale-server.xml</TemplateURL>
+  <TemplateURL>https://raw.githubusercontent.com/juddisjudd/unraid-templates/main/templates/hytale-server.xml</TemplateURL>
   <Icon>https://raw.githubusercontent.com/juddisjudd/unraid-templates/refs/heads/main/images/hytale.png</Icon>
   <ExtraParams>--restart=unless-stopped --stop-timeout=30</ExtraParams>
   <PostArgs/>
@@ -31,7 +31,9 @@ Docker image by indifferentbroccoli.</Overview>
   <DateInstalled/>
   <DonateText>Support me on Ko-fi</DonateText>
   <DonateLink>https://ko-fi.com/ohitsjudd</DonateLink>
-  <Requires/>
+  <Requires>4 CPU cores, 4 GB RAM (8 GB recommended), 10 GB storage. A Hytale account to authenticate the server.</Requires>
+  <License>GPL-3.0</License>
+  <ExtraSearchTerms>hytale hypixel dedicated server</ExtraSearchTerms>
   <Screenshot>https://cdn.hytale.com/5e7b9e9b50cbcd001176c5ad_1___zone_1_shadows.jpg</Screenshot>
   <Screenshot>https://cdn.hytale.com/5e7b9eab50cbcd001176c5b3_4___fight_with_skeleton_archer.jpg</Screenshot>
   <Screenshot>https://cdn.hytale.com/5e7b9ead50cbcd001176c5b5_5___zone_3_exploration.jpg</Screenshot>

@@ -5,14 +5,12 @@
   <Registry>https://hub.docker.com/r/indifferentbroccoli/enshrouded-server-docker</Registry>
   <Network>bridge</Network>
   <MyIP/>
-  <Shell>sh</Shell>
+  <Shell>bash</Shell>
   <Privileged>false</Privileged>
   <Support>https://github.com/juddisjudd/unraid-templates/issues</Support>
   <Project>https://www.enshrouded.com/</Project>
   <ReadMe>https://github.com/indifferentbroccoli/enshrouded-server-docker#readme</ReadMe>
-  <Overview>A dedicated server for Enshrouded. The server is a Windows program. The latest tag runs it with Wine. To use Proton GE, change the tag to proton.
-
-Requirements: 2 to 4 CPU cores at 3.2 GHz, 8 GB RAM (16 GB recommended), 20 GB SSD storage.
+  <Overview>A dedicated server for Enshrouded. The server is a Windows program. The default (latest) tag runs it with Proton GE. You can choose the wine tag when you install.
 
 Forward UDP port 15637 on your router. If you change the port, also change QUERY_PORT.
 
@@ -21,7 +19,7 @@ Set GENERATE_SETTINGS to false if you edit enshrouded_server.json by hand. Other
 Docker image by indifferentbroccoli.</Overview>
   <Category>GameServers:</Category>
   <WebUI/>
-  <TemplateURL>https://raw.githubusercontent.com/juddisjudd/unraid-templates/main/enshrouded-server/enshrouded-server.xml</TemplateURL>
+  <TemplateURL>https://raw.githubusercontent.com/juddisjudd/unraid-templates/main/templates/enshrouded-server.xml</TemplateURL>
   <Icon>https://raw.githubusercontent.com/juddisjudd/unraid-templates/refs/heads/main/images/enshrouded.png</Icon>
   <ExtraParams>--restart=unless-stopped --stop-timeout=30</ExtraParams>
   <PostArgs/>
@@ -29,7 +27,14 @@ Docker image by indifferentbroccoli.</Overview>
   <DateInstalled/>
   <DonateText>Support me on Ko-fi</DonateText>
   <DonateLink>https://ko-fi.com/ohitsjudd</DonateLink>
-  <Requires/>
+  <Requires>2 to 4 CPU cores at 3.2 GHz, 8 GB RAM (16 GB recommended), 20 GB SSD storage.</Requires>
+  <License>GPL-3.0</License>
+  <ExtraSearchTerms>enshrouded keen dedicated server steam proton wine</ExtraSearchTerms>
+  <DefaultTagDescription>Proton GE build</DefaultTagDescription>
+  <Branch>
+    <Tag>wine</Tag>
+    <TagDescription>Wine build</TagDescription>
+  </Branch>
   <Screenshot>https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1203620/09a1e99c47ba7ffb2413c4708a9f5fbef1397652/ss_09a1e99c47ba7ffb2413c4708a9f5fbef1397652.1920x1080.jpg</Screenshot>
   <Screenshot>https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1203620/9c2db32975d266f1051f77e46d347a118c824c57/ss_9c2db32975d266f1051f77e46d347a118c824c57.1920x1080.jpg</Screenshot>
   <Screenshot>https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1203620/4cc606e46868db2159ced08f6fe585a03d7e360f/ss_4cc606e46868db2159ced08f6fe585a03d7e360f.1920x1080.jpg</Screenshot>

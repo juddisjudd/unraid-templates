@@ -5,7 +5,7 @@
   <Registry>https://hub.docker.com/r/indifferentbroccoli/rust-server-docker</Registry>
   <Network>bridge</Network>
   <MyIP/>
-  <Shell>sh</Shell>
+  <Shell>bash</Shell>
   <Privileged>false</Privileged>
   <Support>https://github.com/juddisjudd/unraid-templates/issues</Support>
   <Project>https://rust.facepunch.com/</Project>
@@ -13,8 +13,6 @@
   <Overview>A dedicated server for Rust, with optional Oxide (uMod) plugin support and a built-in RCON tool.
 
 Set RCON_PASSWORD before you start the server.
-
-Requirements: 4 CPU cores, 8 GB RAM (more than 12 GB recommended), 20 GB storage.
 
 Forward these ports on your router: 28015 TCP and UDP (game), 28016 TCP (RCON), and 28082 TCP (Rust+ app).
 
@@ -25,7 +23,7 @@ To send RCON commands, run: docker exec rust-server rcon-cli "say Hello"
 Docker image by indifferentbroccoli.</Overview>
   <Category>GameServers:</Category>
   <WebUI/>
-  <TemplateURL>https://raw.githubusercontent.com/juddisjudd/unraid-templates/main/rust-server/rust-server.xml</TemplateURL>
+  <TemplateURL>https://raw.githubusercontent.com/juddisjudd/unraid-templates/main/templates/rust-server.xml</TemplateURL>
   <Icon>https://raw.githubusercontent.com/juddisjudd/unraid-templates/refs/heads/main/images/rust.png</Icon>
   <ExtraParams>--restart=unless-stopped --stop-timeout=30</ExtraParams>
   <PostArgs/>
@@ -33,7 +31,9 @@ Docker image by indifferentbroccoli.</Overview>
   <DateInstalled/>
   <DonateText>Support me on Ko-fi</DonateText>
   <DonateLink>https://ko-fi.com/ohitsjudd</DonateLink>
-  <Requires/>
+  <Requires>4 CPU cores, 8 GB RAM (more than 12 GB recommended), 20 GB storage.</Requires>
+  <License>GPL-3.0</License>
+  <ExtraSearchTerms>rust facepunch dedicated server steam oxide umod rcon</ExtraSearchTerms>
   <Screenshot>https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/252490/ss_271feae67943bdc141c1249aba116349397e9ba9.1920x1080.jpg</Screenshot>
   <Screenshot>https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/252490/ss_e825b087b95e51c3534383cfd75ad6e8038147c3.1920x1080.jpg</Screenshot>
   <Screenshot>https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/252490/ss_0e646f1a70e5cb8eed00efef8adb9579d40d5b2e.1920x1080.jpg</Screenshot>

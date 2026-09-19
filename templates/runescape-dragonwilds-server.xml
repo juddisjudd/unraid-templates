@@ -5,7 +5,7 @@
   <Registry>https://hub.docker.com/r/indifferentbroccoli/runescape-dragonwilds-server-docker</Registry>
   <Network>bridge</Network>
   <MyIP/>
-  <Shell>sh</Shell>
+  <Shell>bash</Shell>
   <Privileged>false</Privileged>
   <Support>https://github.com/juddisjudd/unraid-templates/issues</Support>
   <Project>https://dragonwilds.runescape.com/</Project>
@@ -14,14 +14,12 @@
 
 Before you start: set OWNER_ID to your Player ID (at the bottom of the in-game Settings menu) and set ADMIN_PASSWORD. The server does not start without OWNER_ID.
 
-Requirements: 4 CPU cores, 8 GB RAM (2 GB + 1 GB per player), 10 GB storage.
-
 Forward UDP port 7777 on your router. The host port and the container port must be the same. If you change the port, also change DEFAULT_PORT.
 
 Docker image by indifferentbroccoli.</Overview>
   <Category>GameServers:</Category>
   <WebUI/>
-  <TemplateURL>https://raw.githubusercontent.com/juddisjudd/unraid-templates/main/runescape-dragonwilds-server/runescape-dragonwilds-server.xml</TemplateURL>
+  <TemplateURL>https://raw.githubusercontent.com/juddisjudd/unraid-templates/main/templates/runescape-dragonwilds-server.xml</TemplateURL>
   <Icon>https://raw.githubusercontent.com/juddisjudd/unraid-templates/refs/heads/main/images/Dragonwilds_Logo.png</Icon>
   <ExtraParams>--restart=unless-stopped --stop-timeout=30</ExtraParams>
   <PostArgs/>
@@ -29,7 +27,9 @@ Docker image by indifferentbroccoli.</Overview>
   <DateInstalled/>
   <DonateText>Support me on Ko-fi</DonateText>
   <DonateLink>https://ko-fi.com/ohitsjudd</DonateLink>
-  <Requires/>
+  <Requires>4 CPU cores, 8 GB RAM (2 GB + 1 GB per player), 10 GB storage. Your RuneScape: DragonWilds Player ID.</Requires>
+  <License>GPL-3.0</License>
+  <ExtraSearchTerms>runescape dragonwilds jagex dedicated server steam</ExtraSearchTerms>
   <Screenshot>https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1374490/8f802b85a8f1002967f4943f76e1d645d1ffb061/ss_8f802b85a8f1002967f4943f76e1d645d1ffb061.1920x1080.jpg</Screenshot>
   <Screenshot>https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1374490/ae64662c060ee16121ab3783bd39efb21f8827a1/ss_ae64662c060ee16121ab3783bd39efb21f8827a1.1920x1080.jpg</Screenshot>
   <Screenshot>https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1374490/d16ec143fa679838d2a88c25798becde17990500/ss_d16ec143fa679838d2a88c25798becde17990500.1920x1080.jpg</Screenshot>
