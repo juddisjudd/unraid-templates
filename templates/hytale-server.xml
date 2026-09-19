@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <Container version="2">
-  <Name>hytale-server</Name>
+  <Name>Hytale-broccoli</Name>
   <Repository>indifferentbroccoli/hytale-server-docker:latest</Repository>
   <Registry>https://hub.docker.com/r/indifferentbroccoli/hytale-server-docker</Registry>
   <Network>bridge</Network>

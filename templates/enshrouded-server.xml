@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <Container version="2">
-  <Name>enshrouded-server</Name>
+  <Name>Enshrouded-broccoli</Name>
   <Repository>indifferentbroccoli/enshrouded-server-docker:latest</Repository>
   <Registry>https://hub.docker.com/r/indifferentbroccoli/enshrouded-server-docker</Registry>
   <Network>bridge</Network>

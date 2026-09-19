@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <Container version="2">
-  <Name>runescape-dragonwilds-server</Name>
+  <Name>Runescape Dragonwilds-broccoli</Name>
   <Repository>indifferentbroccoli/runescape-dragonwilds-server-docker:latest</Repository>
   <Registry>https://hub.docker.com/r/indifferentbroccoli/runescape-dragonwilds-server-docker</Registry>
   <Network>bridge</Network>

@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <Container version="2">
-  <Name>rust-server</Name>
+  <Name>RUST-broccoli</Name>
   <Repository>indifferentbroccoli/rust-server-docker:latest</Repository>
   <Registry>https://hub.docker.com/r/indifferentbroccoli/rust-server-docker</Registry>
   <Network>bridge</Network>
