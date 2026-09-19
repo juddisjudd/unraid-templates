@@ -7,26 +7,54 @@
   <MyIP/>
   <Shell>sh</Shell>
   <Privileged>false</Privileged>
-  <Support/>
-  <Project/>
-  <Overview>A Docker container for running a Hytale dedicated server.</Overview>
+  <Support>https://github.com/juddisjudd/unraid-templates/issues</Support>
+  <Project>https://hytale.com/</Project>
+  <ReadMe>https://github.com/indifferentbroccoli/hytale-server-docker#readme</ReadMe>
+  <Overview>A dedicated server for Hytale. The server files are downloaded and updated with the official Hytale Downloader.
+
+First start: you must sign in with your Hytale account. Open the container log, go to the URL that it shows, and sign in. When the server has started, the log shows a second link. Open it and authorize again.
+
+Requirements: 4 CPU cores, 4 GB RAM (8 GB recommended), 10 GB storage. View distance has the largest effect on RAM use. Set MAX_MEMORY to match the RAM you give the server.
+
+Hytale uses QUIC over UDP. Forward UDP port 5520 on your router. If you change the port, also change DEFAULT_PORT.
+
+To install mods, put .jar or .zip files in the mods folder of the server files and restart the container.
+
+Docker image by indifferentbroccoli.</Overview>
   <Category>GameServers:</Category>
   <WebUI/>
-  <TemplateURL/>
+  <TemplateURL>https://raw.githubusercontent.com/juddisjudd/unraid-templates/main/hytale-server/hytale-server.xml</TemplateURL>
   <Icon>https://raw.githubusercontent.com/juddisjudd/unraid-templates/refs/heads/main/images/hytale.png</Icon>
-  <ExtraParams/>
+  <ExtraParams>--restart=unless-stopped --stop-timeout=30</ExtraParams>
   <PostArgs/>
   <CPUset/>
   <DateInstalled/>
-  <DonateText/>
-  <DonateLink/>
+  <DonateText>Support me on Ko-fi</DonateText>
+  <DonateLink>https://ko-fi.com/ohitsjudd</DonateLink>
   <Requires/>
-  <Config Name="PUID" Target="PUID" Default="99" Mode="" Description="User ID for file permissions" Type="Variable" Display="always" Required="false" Mask="false">99</Config>
-  <Config Name="PGID" Target="PGID" Default="100" Mode="" Description="Group ID for file permissions" Type="Variable" Display="always" Required="false" Mask="false">100</Config>
-  <Config Name="SERVER_NAME" Target="SERVER_NAME" Default="HytaleServer" Mode="" Description="Display name of the server" Type="Variable" Display="always" Required="true" Mask="false">HytaleServer</Config>
-  <Config Name="MAX_PLAYERS" Target="MAX_PLAYERS" Default="20" Mode="" Description="Max players" Type="Variable" Display="always" Required="false" Mask="false">20</Config>
-  <Config Name="VIEW_DISTANCE" Target="VIEW_DISTANCE" Default="12" Mode="" Description="View Distance" Type="Variable" Display="always" Required="false" Mask="false">12</Config>
-  <Config Name="AUTH_MODE" Target="AUTH_MODE" Default="authenticated" Mode="" Description="Authentication Mode (authenticated|offline)" Type="Variable" Display="advanced" Required="false" Mask="false">authenticated</Config>
-  <Config Name="Game Port" Target="5520" Default="5520" Mode="udp" Description="" Type="Port" Display="always" Required="true" Mask="false">5520</Config>
-  <Config Name="Server Files" Target="/hytale" Default="/mnt/user/appdata/hytale" Mode="rw" Description="Hytale server files" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/hytale</Config>
+  <Screenshot>https://cdn.hytale.com/5e7b9e9b50cbcd001176c5ad_1___zone_1_shadows.jpg</Screenshot>
+  <Screenshot>https://cdn.hytale.com/5e7b9eab50cbcd001176c5b3_4___fight_with_skeleton_archer.jpg</Screenshot>
+  <Screenshot>https://cdn.hytale.com/5e7b9ead50cbcd001176c5b5_5___zone_3_exploration.jpg</Screenshot>
+  <Config Name="Game Port" Target="5520" Default="5520" Mode="udp" Description="UDP game port (QUIC). Forward it on your router. Must be the same as DEFAULT_PORT." Type="Port" Display="always" Required="true" Mask="false">5520</Config>
+  <Config Name="Server Files" Target="/home/hytale/server-files" Default="/mnt/user/appdata/hytale" Mode="rw" Description="Server files, worlds, mods, config, backups, and saved authentication." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/hytale</Config>
+  <Config Name="Server Name" Target="SERVER_NAME" Default="HytaleServer" Mode="" Description="Name of the server." Type="Variable" Display="always" Required="true" Mask="false">HytaleServer</Config>
+  <Config Name="Max Players" Target="MAX_PLAYERS" Default="20" Mode="" Description="Maximum number of players on the server." Type="Variable" Display="always" Required="false" Mask="false">20</Config>
+  <Config Name="View Distance" Target="VIEW_DISTANCE" Default="12" Mode="" Description="View distance in chunks. 12 chunks is 384 blocks. Higher values need more RAM." Type="Variable" Display="always" Required="false" Mask="false">12</Config>
+  <Config Name="Max Memory" Target="MAX_MEMORY" Default="8G" Mode="" Description="Maximum Java heap size, for example 8G or 8192M. Include the unit." Type="Variable" Display="always" Required="true" Mask="false">8G</Config>
+  <Config Name="Enable Backups" Target="ENABLE_BACKUPS" Default="false" Mode="" Description="Make automatic world backups (true or false)." Type="Variable" Display="always" Required="false" Mask="false">false</Config>
+  <Config Name="Backup Frequency" Target="BACKUP_FREQUENCY" Default="30" Mode="" Description="Minutes between backups, when backups are on." Type="Variable" Display="always" Required="false" Mask="false">30</Config>
+  <Config Name="Backup Max Count" Target="BACKUP_MAX_COUNT" Default="5" Mode="" Description="Number of backups to keep." Type="Variable" Display="always" Required="false" Mask="false">5</Config>
+  <Config Name="Min Memory" Target="MIN_MEMORY" Default="" Mode="" Description="Minimum Java heap size, for example 4G. Leave empty to not set a minimum." Type="Variable" Display="advanced" Required="false" Mask="false"/>
+  <Config Name="JVM Arguments" Target="JVM_ARGS" Default="" Mode="" Description="Optional extra Java arguments, for example -XX:+UseG1GC." Type="Variable" Display="advanced" Required="false" Mask="false"/>
+  <Config Name="Auth Mode" Target="AUTH_MODE" Default="authenticated" Mode="" Description="authenticated or offline. Use offline only for testing, because it lets players join without authentication." Type="Variable" Display="advanced" Required="false" Mask="false">authenticated</Config>
+  <Config Name="Auth Select Profile" Target="AUTH_SELECT_PROFILE" Default="1" Mode="" Description="Profile number to authenticate the server with, if your account has more than one profile." Type="Variable" Display="advanced" Required="false" Mask="false">1</Config>
+  <Config Name="Patchline" Target="PATCHLINE" Default="release" Mode="" Description="Game patchline: release or pre-release." Type="Variable" Display="advanced" Required="false" Mask="false">release</Config>
+  <Config Name="Download On Start" Target="DOWNLOAD_ON_START" Default="true" Mode="" Description="Download and update the server files on each start. Set to false to skip." Type="Variable" Display="advanced" Required="false" Mask="false">true</Config>
+  <Config Name="Default Port" Target="DEFAULT_PORT" Default="5520" Mode="" Description="UDP port the server listens on. Must be the same as the Game Port." Type="Variable" Display="advanced" Required="false" Mask="false">5520</Config>
+  <Config Name="Backup Directory" Target="BACKUP_DIR" Default="/home/hytale/server-files/backups" Mode="" Description="Folder in the container for backups. Keep it inside /home/hytale/server-files so backups persist." Type="Variable" Display="advanced" Required="false" Mask="false">/home/hytale/server-files/backups</Config>
+  <Config Name="Use AOT Cache" Target="USE_AOT_CACHE" Default="true" Mode="" Description="Use the ahead-of-time compilation cache for a faster start." Type="Variable" Display="advanced" Required="false" Mask="false">true</Config>
+  <Config Name="Accept Early Plugins" Target="ACCEPT_EARLY_PLUGINS" Default="false" Mode="" Description="Allow early plugins. These can make the server unstable." Type="Variable" Display="advanced" Required="false" Mask="false">false</Config>
+  <Config Name="Disable Sentry" Target="DISABLE_SENTRY" Default="true" Mode="" Description="Turn off Sentry crash reporting." Type="Variable" Display="advanced" Required="false" Mask="false">true</Config>
+  <Config Name="PUID" Target="PUID" Default="99" Mode="" Description="User ID for file permissions." Type="Variable" Display="advanced" Required="true" Mask="false">99</Config>
+  <Config Name="PGID" Target="PGID" Default="100" Mode="" Description="Group ID for file permissions." Type="Variable" Display="advanced" Required="true" Mask="false">100</Config>
 </Container>

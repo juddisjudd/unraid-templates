@@ -7,31 +7,72 @@
   <MyIP/>
   <Shell>sh</Shell>
   <Privileged>false</Privileged>
-  <Support/>
-  <Project/>
-  <Overview>A Docker container for running a Rust dedicated server.</Overview>
+  <Support>https://github.com/juddisjudd/unraid-templates/issues</Support>
+  <Project>https://rust.facepunch.com/</Project>
+  <ReadMe>https://github.com/indifferentbroccoli/rust-server-docker#readme</ReadMe>
+  <Overview>A dedicated server for Rust, with optional Oxide (uMod) plugin support and a built-in RCON tool.
+
+Set RCON_PASSWORD before you start the server.
+
+Requirements: 4 CPU cores, 8 GB RAM (more than 12 GB recommended), 20 GB storage.
+
+Forward these ports on your router: 28015 TCP and UDP (game), 28016 TCP (RCON), and 28082 TCP (Rust+ app).
+
+The settings in this template write over the server configuration on each start. To keep your own configuration, set GENERATE_SETTINGS to false.
+
+To send RCON commands, run: docker exec rust-server rcon-cli "say Hello"
+
+Docker image by indifferentbroccoli.</Overview>
   <Category>GameServers:</Category>
   <WebUI/>
-  <TemplateURL/>
+  <TemplateURL>https://raw.githubusercontent.com/juddisjudd/unraid-templates/main/rust-server/rust-server.xml</TemplateURL>
   <Icon>https://raw.githubusercontent.com/juddisjudd/unraid-templates/refs/heads/main/images/rust.png</Icon>
-  <ExtraParams/>
+  <ExtraParams>--restart=unless-stopped --stop-timeout=30</ExtraParams>
   <PostArgs/>
   <CPUset/>
   <DateInstalled/>
-  <DonateText/>
-  <DonateLink/>
+  <DonateText>Support me on Ko-fi</DonateText>
+  <DonateLink>https://ko-fi.com/ohitsjudd</DonateLink>
   <Requires/>
-  <Config Name="PUID" Target="PUID" Default="99" Mode="" Description="User ID for file permissions" Type="Variable" Display="always" Required="false" Mask="false">99</Config>
-  <Config Name="PGID" Target="PGID" Default="100" Mode="" Description="Group ID for file permissions" Type="Variable" Display="always" Required="false" Mask="false">100</Config>
-  <Config Name="SERVER_NAME" Target="SERVER_NAME" Default="RustServer" Mode="" Description="Display name of the server" Type="Variable" Display="always" Required="true" Mask="false">RustServer</Config>
-  <Config Name="SERVER_DESCRIPTION" Target="SERVER_DESCRIPTION" Default="Welcome to the server" Mode="" Description="Server Description" Type="Variable" Display="always" Required="false" Mask="false">Welcome to the server</Config>
-  <Config Name="RCON_PASSWORD" Target="RCON_PASSWORD" Default="" Mode="" Description="Required password for RCON" Type="Variable" Display="always" Required="true" Mask="true"/>
-  <Config Name="MAX_PLAYERS" Target="MAX_PLAYERS" Default="50" Mode="" Description="Max players" Type="Variable" Display="always" Required="false" Mask="false">50</Config>
-  <Config Name="WORLD_SIZE" Target="WORLD_SIZE" Default="3500" Mode="" Description="World Size (1000 - 6000)" Type="Variable" Display="always" Required="false" Mask="false">3500</Config>
-  <Config Name="SERVER_SEED" Target="SERVER_SEED" Default="12345" Mode="" Description="World Seed" Type="Variable" Display="always" Required="false" Mask="false">12345</Config>
-  <Config Name="Game Port" Target="28015" Default="28015" Mode="tcp" Description="" Type="Port" Display="always" Required="true" Mask="false">28015</Config>
-  <Config Name="Game Port UDP" Target="28015" Default="28015" Mode="udp" Description="" Type="Port" Display="always" Required="true" Mask="false">28015</Config>
-  <Config Name="RCON Port" Target="28016" Default="28016" Mode="tcp" Description="" Type="Port" Display="always" Required="true" Mask="false">28016</Config>
-  <Config Name="App Port" Target="28082" Default="28082" Mode="tcp" Description="" Type="Port" Display="always" Required="false" Mask="false">28082</Config>
-  <Config Name="Server Files" Target="/steamcmd/rust" Default="/mnt/user/appdata/rust" Mode="rw" Description="Rust server files" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/rust</Config>
+  <Screenshot>https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/252490/ss_271feae67943bdc141c1249aba116349397e9ba9.1920x1080.jpg</Screenshot>
+  <Screenshot>https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/252490/ss_e825b087b95e51c3534383cfd75ad6e8038147c3.1920x1080.jpg</Screenshot>
+  <Screenshot>https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/252490/ss_0e646f1a70e5cb8eed00efef8adb9579d40d5b2e.1920x1080.jpg</Screenshot>
+  <Config Name="Game Port" Target="28015" Default="28015" Mode="tcp" Description="Game port (TCP). Must be the same as SERVER_PORT." Type="Port" Display="always" Required="true" Mask="false">28015</Config>
+  <Config Name="Game Port UDP" Target="28015" Default="28015" Mode="udp" Description="Game port (UDP). Forward it on your router. Must be the same as SERVER_PORT." Type="Port" Display="always" Required="true" Mask="false">28015</Config>
+  <Config Name="RCON Port" Target="28016" Default="28016" Mode="tcp" Description="RCON port (TCP). Must be the same as RCON_PORT." Type="Port" Display="always" Required="true" Mask="false">28016</Config>
+  <Config Name="RCON Port UDP" Target="28016" Default="28016" Mode="udp" Description="RCON port (UDP). Must be the same as RCON_PORT." Type="Port" Display="always" Required="false" Mask="false">28016</Config>
+  <Config Name="App Port" Target="28082" Default="28082" Mode="tcp" Description="Rust+ companion app port (TCP). Must be the same as APP_PORT." Type="Port" Display="always" Required="false" Mask="false">28082</Config>
+  <Config Name="Server Files" Target="/steamcmd/rust" Default="/mnt/user/appdata/rust" Mode="rw" Description="Server files, game data, and configuration." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/rust</Config>
+  <Config Name="RCON Password" Target="RCON_PASSWORD" Default="" Mode="" Description="Required. Password for RCON access." Type="Variable" Display="always" Required="true" Mask="true"/>
+  <Config Name="Server Name" Target="SERVER_NAME" Default="RustServer" Mode="" Description="Name of the server in the server browser." Type="Variable" Display="always" Required="true" Mask="false">RustServer</Config>
+  <Config Name="Server Description" Target="SERVER_DESCRIPTION" Default="Welcome to the server" Mode="" Description="Description in the server browser." Type="Variable" Display="always" Required="false" Mask="false">Welcome to the server</Config>
+  <Config Name="Max Players" Target="MAX_PLAYERS" Default="50" Mode="" Description="Maximum number of players that can connect." Type="Variable" Display="always" Required="false" Mask="false">50</Config>
+  <Config Name="World Size" Target="WORLD_SIZE" Default="3500" Mode="" Description="Size of the map. 3000 to 6000 is recommended." Type="Variable" Display="always" Required="false" Mask="false">3500</Config>
+  <Config Name="Server Seed" Target="SERVER_SEED" Default="12345" Mode="" Description="World generation seed. The same seed gives the same map." Type="Variable" Display="always" Required="false" Mask="false">12345</Config>
+  <Config Name="Game Mode" Target="GAME_MODE" Default="standard" Mode="" Description="standard, softcore, or hardcore." Type="Variable" Display="always" Required="false" Mask="false">standard</Config>
+  <Config Name="PvP" Target="PVP" Default="true" Mode="" Description="Enable player-versus-player combat (true or false)." Type="Variable" Display="always" Required="false" Mask="false">true</Config>
+  <Config Name="Server Tags" Target="SERVER_TAGS" Default="vanilla" Mode="" Description="Comma-separated tags for the server browser, for example vanilla,monthly,pve." Type="Variable" Display="always" Required="false" Mask="false">vanilla</Config>
+  <Config Name="Oxide Enabled" Target="OXIDE_ENABLED" Default="false" Mode="" Description="Install the Oxide (uMod) plugin framework (true or false)." Type="Variable" Display="always" Required="false" Mask="false">false</Config>
+  <Config Name="Map Type" Target="MAP_TYPE" Default="Procedural Map" Mode="" Description="Procedural Map, Barren, HapisMountain, SavasIsland, or SavasIsland_koth." Type="Variable" Display="advanced" Required="false" Mask="false">Procedural Map</Config>
+  <Config Name="Custom Map URL" Target="CUSTOM_MAP_URL" Default="" Mode="" Description="Direct URL to a custom map file. If set, MAP_TYPE is not used." Type="Variable" Display="advanced" Required="false" Mask="false"/>
+  <Config Name="Max Team Size" Target="MAX_TEAM_SIZE" Default="" Mode="" Description="Maximum players per team. Leave empty for the server default." Type="Variable" Display="advanced" Required="false" Mask="false"/>
+  <Config Name="Server Era" Target="SERVER_ERA" Default="" Mode="" Description="Era for primitive mode servers. Leave empty unless you run primitive mode." Type="Variable" Display="advanced" Required="false" Mask="false"/>
+  <Config Name="Decay Scale" Target="DECAY_SCALE" Default="1.0" Mode="" Description="Structure decay scale. 0 is no decay and 1 is the default." Type="Variable" Display="advanced" Required="false" Mask="false">1.0</Config>
+  <Config Name="Stability" Target="STABILITY" Default="true" Mode="" Description="Enable the structure stability system (true or false)." Type="Variable" Display="advanced" Required="false" Mask="false">true</Config>
+  <Config Name="Radiation" Target="RADIATION" Default="true" Mode="" Description="Enable radiation in radtowns (true or false)." Type="Variable" Display="advanced" Required="false" Mask="false">true</Config>
+  <Config Name="Save Interval" Target="SAVE_INTERVAL" Default="600" Mode="" Description="Seconds between world saves." Type="Variable" Display="advanced" Required="false" Mask="false">600</Config>
+  <Config Name="Server Secure" Target="SERVER_SECURE" Default="1" Mode="" Description="1 enables VAC and the public server listing. 0 is a private or sandbox server." Type="Variable" Display="advanced" Required="false" Mask="false">1</Config>
+  <Config Name="Server Encryption" Target="SERVER_ENCRYPTION" Default="2" Mode="" Description="0 is none, 1 is weak, and 2 is strong. Some mods need a weaker setting." Type="Variable" Display="advanced" Required="false" Mask="false">2</Config>
+  <Config Name="Server Identity" Target="SERVER_IDENTITY" Default="" Mode="" Description="Folder name for server data and saves. If empty, SERVER_NAME is used." Type="Variable" Display="advanced" Required="false" Mask="false"/>
+  <Config Name="Server URL" Target="SERVER_URL" Default="" Mode="" Description="Website URL for your server." Type="Variable" Display="advanced" Required="false" Mask="false"/>
+  <Config Name="Server Header Image" Target="SERVER_HEADERIMAGE" Default="" Mode="" Description="HTTP URL of a header image for the server browser." Type="Variable" Display="advanced" Required="false" Mask="false"/>
+  <Config Name="Server Logo Image" Target="SERVER_LOGOIMAGE" Default="" Mode="" Description="HTTP URL of a logo image for the server browser." Type="Variable" Display="advanced" Required="false" Mask="false"/>
+  <Config Name="Startup Arguments" Target="STARTUP_ARGUMENTS" Default="" Mode="" Description="Extra arguments for RustDedicated, added after all other arguments, for example +server.tags monthly,vanilla." Type="Variable" Display="advanced" Required="false" Mask="false"/>
+  <Config Name="Generate Settings" Target="GENERATE_SETTINGS" Default="true" Mode="" Description="Apply the settings from this template on each start. Set to false to keep your own server configuration." Type="Variable" Display="advanced" Required="false" Mask="false">true</Config>
+  <Config Name="Update On Start" Target="UPDATE_ON_START" Default="true" Mode="" Description="Download and validate the server files from Steam on each start. Set to false to skip." Type="Variable" Display="advanced" Required="false" Mask="false">true</Config>
+  <Config Name="Server Port" Target="SERVER_PORT" Default="28015" Mode="" Description="Game port the server listens on. Must be the same as the Game Port." Type="Variable" Display="advanced" Required="false" Mask="false">28015</Config>
+  <Config Name="RCON Port Variable" Target="RCON_PORT" Default="28016" Mode="" Description="RCON port the server listens on. Must be the same as the RCON Port." Type="Variable" Display="advanced" Required="false" Mask="false">28016</Config>
+  <Config Name="App Port Variable" Target="APP_PORT" Default="28082" Mode="" Description="Rust+ app port the server listens on. Must be the same as the App Port." Type="Variable" Display="advanced" Required="false" Mask="false">28082</Config>
+  <Config Name="PUID" Target="PUID" Default="99" Mode="" Description="User ID for file permissions." Type="Variable" Display="advanced" Required="true" Mask="false">99</Config>
+  <Config Name="PGID" Target="PGID" Default="100" Mode="" Description="Group ID for file permissions." Type="Variable" Display="advanced" Required="true" Mask="false">100</Config>
 </Container>

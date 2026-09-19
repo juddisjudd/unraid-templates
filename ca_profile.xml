@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<CommunityApplications>
-  <!-- Required profile -->
+<Maintainer>
+  <Icon>https://avatars.githubusercontent.com/u/85649796</Icon>
   <Profile>
     A collection of custom Docker templates for Unraid's Community Applications, focusing on dedicated game servers like RuneScape: DragonWilds, Valheim, Rust, Enshrouded, and Hytale. Please visit the GitHub repository for more information, support, and contribution guidelines.
   </Profile>
-  <!-- Optional web page -->
   <WebPage>https://github.com/juddisjudd/unraid-templates</WebPage>
-  <!-- Optional donation links -->
   <DonateText>Support me on Ko-fi</DonateText>
   <DonateLink>https://ko-fi.com/ohitsjudd</DonateLink>
-</CommunityApplications>
+</Maintainer>

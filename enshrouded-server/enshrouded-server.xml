@@ -7,26 +7,40 @@
   <MyIP/>
   <Shell>sh</Shell>
   <Privileged>false</Privileged>
-  <Support/>
-  <Project/>
-  <Overview>A Docker container for running an Enshrouded dedicated server.</Overview>
+  <Support>https://github.com/juddisjudd/unraid-templates/issues</Support>
+  <Project>https://www.enshrouded.com/</Project>
+  <ReadMe>https://github.com/indifferentbroccoli/enshrouded-server-docker#readme</ReadMe>
+  <Overview>A dedicated server for Enshrouded. The server is a Windows program. The latest tag runs it with Wine. To use Proton GE, change the tag to proton.
+
+Requirements: 2 to 4 CPU cores at 3.2 GHz, 8 GB RAM (16 GB recommended), 20 GB SSD storage.
+
+Forward UDP port 15637 on your router. If you change the port, also change QUERY_PORT.
+
+Set GENERATE_SETTINGS to false if you edit enshrouded_server.json by hand. Otherwise the container writes over your changes on each start.
+
+Docker image by indifferentbroccoli.</Overview>
   <Category>GameServers:</Category>
   <WebUI/>
-  <TemplateURL/>
+  <TemplateURL>https://raw.githubusercontent.com/juddisjudd/unraid-templates/main/enshrouded-server/enshrouded-server.xml</TemplateURL>
   <Icon>https://raw.githubusercontent.com/juddisjudd/unraid-templates/refs/heads/main/images/enshrouded.png</Icon>
-  <ExtraParams/>
+  <ExtraParams>--restart=unless-stopped --stop-timeout=30</ExtraParams>
   <PostArgs/>
   <CPUset/>
   <DateInstalled/>
-  <DonateText/>
-  <DonateLink/>
+  <DonateText>Support me on Ko-fi</DonateText>
+  <DonateLink>https://ko-fi.com/ohitsjudd</DonateLink>
   <Requires/>
-  <Config Name="PUID" Target="PUID" Default="99" Mode="" Description="User ID for file permissions" Type="Variable" Display="always" Required="false" Mask="false">99</Config>
-  <Config Name="PGID" Target="PGID" Default="100" Mode="" Description="Group ID for file permissions" Type="Variable" Display="always" Required="false" Mask="false">100</Config>
-  <Config Name="SERVER_NAME" Target="SERVER_NAME" Default="EnshroudedServer" Mode="" Description="Display name of the server" Type="Variable" Display="always" Required="true" Mask="false">EnshroudedServer</Config>
-  <Config Name="SERVER_PASSWORD" Target="SERVER_PASSWORD" Default="" Mode="" Description="Optional password to join the server" Type="Variable" Display="always" Required="false" Mask="true"/>
-  <Config Name="UPDATE_ON_START" Target="UPDATE_ON_START" Default="true" Mode="" Description="Update server files on start" Type="Variable" Display="advanced" Required="false" Mask="false">true</Config>
-  <Config Name="Game Port" Target="15636" Default="15636" Mode="udp" Description="" Type="Port" Display="always" Required="true" Mask="false">15636</Config>
-  <Config Name="Query Port" Target="15637" Default="15637" Mode="udp" Description="" Type="Port" Display="always" Required="true" Mask="false">15637</Config>
-  <Config Name="Server Files" Target="/enshrouded" Default="/mnt/user/appdata/enshrouded" Mode="rw" Description="Enshrouded server files and config" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/enshrouded</Config>
+  <Screenshot>https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1203620/09a1e99c47ba7ffb2413c4708a9f5fbef1397652/ss_09a1e99c47ba7ffb2413c4708a9f5fbef1397652.1920x1080.jpg</Screenshot>
+  <Screenshot>https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1203620/9c2db32975d266f1051f77e46d347a118c824c57/ss_9c2db32975d266f1051f77e46d347a118c824c57.1920x1080.jpg</Screenshot>
+  <Screenshot>https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1203620/4cc606e46868db2159ced08f6fe585a03d7e360f/ss_4cc606e46868db2159ced08f6fe585a03d7e360f.1920x1080.jpg</Screenshot>
+  <Config Name="Query Port" Target="15637" Default="15637" Mode="udp" Description="UDP query port. Forward it on your router. Must be the same as QUERY_PORT." Type="Port" Display="always" Required="true" Mask="false">15637</Config>
+  <Config Name="Server Files" Target="/home/steam/enshrouded" Default="/mnt/user/appdata/enshrouded" Mode="rw" Description="Server files, saves, and enshrouded_server.json." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/enshrouded</Config>
+  <Config Name="Server Name" Target="SERVER_NAME" Default="EnshroudedServer" Mode="" Description="Display name of the server." Type="Variable" Display="always" Required="true" Mask="false">EnshroudedServer</Config>
+  <Config Name="Server Password" Target="SERVER_PASSWORD" Default="" Mode="" Description="Optional password to join. Leave empty for a public server." Type="Variable" Display="always" Required="false" Mask="true"/>
+  <Config Name="Max Players" Target="MAX_PLAYERS" Default="12" Mode="" Description="Maximum number of players at the same time." Type="Variable" Display="always" Required="false" Mask="false">12</Config>
+  <Config Name="Query Port Variable" Target="QUERY_PORT" Default="15637" Mode="" Description="UDP query port the server listens on. Must be the same as the Query Port." Type="Variable" Display="advanced" Required="false" Mask="false">15637</Config>
+  <Config Name="Generate Settings" Target="GENERATE_SETTINGS" Default="true" Mode="" Description="Write the settings from this template to enshrouded_server.json on each start. Set to false to use the file on disk as it is." Type="Variable" Display="advanced" Required="false" Mask="false">true</Config>
+  <Config Name="Update On Start" Target="UPDATE_ON_START" Default="true" Mode="" Description="Download and validate the server files on each start. Set to false to skip." Type="Variable" Display="advanced" Required="false" Mask="false">true</Config>
+  <Config Name="PUID" Target="PUID" Default="99" Mode="" Description="User ID the server runs as." Type="Variable" Display="advanced" Required="true" Mask="false">99</Config>
+  <Config Name="PGID" Target="PGID" Default="100" Mode="" Description="Group ID the server runs as." Type="Variable" Display="advanced" Required="true" Mask="false">100</Config>
 </Container>

@@ -7,30 +7,65 @@
   <MyIP/>
   <Shell>sh</Shell>
   <Privileged>false</Privileged>
-  <Support/>
-  <Project/>
-  <Overview>A Docker container for running a Valheim dedicated server.</Overview>
+  <Support>https://github.com/juddisjudd/unraid-templates/issues</Support>
+  <Project>https://www.valheimgame.com/</Project>
+  <ReadMe>https://github.com/indifferentbroccoli/valheim-server-docker#readme</ReadMe>
+  <Overview>A dedicated server for Valheim, with crossplay, world modifiers, and optional BepInEx and Thunderstore mods.
+
+Set SERVER_PASSWORD before you start the server.
+
+Requirements: 4 CPU cores at 2.8 GHz, 2 GB RAM (more than 4 GB recommended), 2 GB storage.
+
+Forward UDP ports 2456 and 2457 on your router. Valheim uses PORT and PORT + 1. If you change the ports, also change PORT.
+
+The server files are installed on first start. After that, they are only updated if UPDATE_ON_START is true.
+
+Docker image by indifferentbroccoli.</Overview>
   <Category>GameServers:</Category>
   <WebUI/>
-  <TemplateURL/>
+  <TemplateURL>https://raw.githubusercontent.com/juddisjudd/unraid-templates/main/valheim-server/valheim-server.xml</TemplateURL>
   <Icon>https://raw.githubusercontent.com/juddisjudd/unraid-templates/refs/heads/main/images/valheim.png</Icon>
-  <ExtraParams/>
+  <ExtraParams>--restart=unless-stopped --stop-timeout=30</ExtraParams>
   <PostArgs/>
   <CPUset/>
   <DateInstalled/>
-  <DonateText/>
-  <DonateLink/>
+  <DonateText>Support me on Ko-fi</DonateText>
+  <DonateLink>https://ko-fi.com/ohitsjudd</DonateLink>
   <Requires/>
-  <Config Name="PUID" Target="PUID" Default="99" Mode="" Description="User ID for file permissions" Type="Variable" Display="always" Required="false" Mask="false">99</Config>
-  <Config Name="PGID" Target="PGID" Default="100" Mode="" Description="Group ID for file permissions" Type="Variable" Display="always" Required="false" Mask="false">100</Config>
-  <Config Name="SERVER_NAME" Target="SERVER_NAME" Default="ValheimServer" Mode="" Description="Display name of the server" Type="Variable" Display="always" Required="true" Mask="false">ValheimServer</Config>
-  <Config Name="SERVER_PASSWORD" Target="SERVER_PASSWORD" Default="" Mode="" Description="Required password to join the server" Type="Variable" Display="always" Required="true" Mask="true"/>
-  <Config Name="WORLD_NAME" Target="WORLD_NAME" Default="Dedicated" Mode="" Description="Name of the world" Type="Variable" Display="always" Required="true" Mask="false">Dedicated</Config>
-  <Config Name="PUBLIC" Target="PUBLIC" Default="true" Mode="" Description="Public server (true/false)" Type="Variable" Display="advanced" Required="false" Mask="false">true</Config>
-  <Config Name="CROSSPLAY_ENABLED" Target="CROSSPLAY_ENABLED" Default="true" Mode="" Description="Enable crossplay" Type="Variable" Display="advanced" Required="false" Mask="false">true</Config>
-  <Config Name="PORT" Target="PORT" Default="2456" Mode="" Description="Server port" Type="Variable" Display="advanced" Required="false" Mask="false">2456</Config>
-  <Config Name="Game Port 1" Target="2456" Default="2456" Mode="udp" Description="" Type="Port" Display="always" Required="true" Mask="false">2456</Config>
-  <Config Name="Game Port 2" Target="2457" Default="2457" Mode="udp" Description="" Type="Port" Display="always" Required="true" Mask="false">2457</Config>
-  <Config Name="Server Files" Target="/valheim" Default="/mnt/user/appdata/valheim" Mode="rw" Description="Valheim server files" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/valheim</Config>
-  <Config Name="Server Saves" Target="/valheim-saves" Default="/mnt/user/appdata/valheim/saves" Mode="rw" Description="Valheim saves" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/valheim/saves</Config>
+  <Screenshot>https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/892970/5a31353178f635b67f0c8720ebb8a1a95b637276/ss_5a31353178f635b67f0c8720ebb8a1a95b637276.1920x1080.jpg</Screenshot>
+  <Screenshot>https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/892970/bc7c361dab1780543a3ceca50c8fba831e5bc8db/ss_bc7c361dab1780543a3ceca50c8fba831e5bc8db.1920x1080.jpg</Screenshot>
+  <Screenshot>https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/892970/ss_a600a7d4ca954543e22f571a9629521a13f82143.1920x1080.jpg</Screenshot>
+  <Config Name="Game Port 1" Target="2456" Default="2456" Mode="udp" Description="UDP game port. Forward it on your router. Must be the same as PORT." Type="Port" Display="always" Required="true" Mask="false">2456</Config>
+  <Config Name="Game Port 2" Target="2457" Default="2457" Mode="udp" Description="UDP query port. Forward it on your router. Must be PORT + 1." Type="Port" Display="always" Required="true" Mask="false">2457</Config>
+  <Config Name="Server Files" Target="/valheim" Default="/mnt/user/appdata/valheim" Mode="rw" Description="Valheim server files." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/valheim</Config>
+  <Config Name="Server Saves" Target="/valheim-saves" Default="/mnt/user/appdata/valheim/saves" Mode="rw" Description="Worlds and backups." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/valheim/saves</Config>
+  <Config Name="Server Name" Target="SERVER_NAME" Default="ValheimServer" Mode="" Description="Name of the server in the server list." Type="Variable" Display="always" Required="true" Mask="false">ValheimServer</Config>
+  <Config Name="Server Password" Target="SERVER_PASSWORD" Default="" Mode="" Description="Required. Password to join. Use at least 5 characters, and do not include the server name." Type="Variable" Display="always" Required="true" Mask="true"/>
+  <Config Name="World Name" Target="WORLD_NAME" Default="Dedicated" Mode="" Description="Name of the world. If no world has this name, a new world is made." Type="Variable" Display="always" Required="true" Mask="false">Dedicated</Config>
+  <Config Name="Public" Target="PUBLIC" Default="true" Mode="" Description="Show the server in the server list. If false, players join with the Join IP button." Type="Variable" Display="always" Required="false" Mask="false">true</Config>
+  <Config Name="Crossplay Enabled" Target="CROSSPLAY_ENABLED" Default="true" Mode="" Description="Use the crossplay backend (PlayFab) so players on all platforms can join." Type="Variable" Display="always" Required="false" Mask="false">true</Config>
+  <Config Name="Max Players" Target="MAX_PLAYERS" Default="10" Mode="" Description="Maximum number of players. Vanilla Valheim allows 10. Other values install BepInEx and the MaxPlayerCount mod." Type="Variable" Display="always" Required="false" Mask="false">10</Config>
+  <Config Name="Server Preset" Target="SERVER_PRESET" Default="Normal" Mode="" Description="World modifier preset: Normal, Casual, Easy, Hard, Hardcore, Immersive, or Hammer. It replaces earlier modifiers." Type="Variable" Display="always" Required="false" Mask="false">Normal</Config>
+  <Config Name="Modifier: Combat" Target="MODIFIER_COMBAT" Default="" Mode="" Description="veryeasy, easy, hard, or veryhard. Leave empty for the preset value." Type="Variable" Display="advanced" Required="false" Mask="false"/>
+  <Config Name="Modifier: Death Penalty" Target="MODIFIER_DEATH" Default="" Mode="" Description="casual, veryeasy, easy, hard, or hardcore. Leave empty for the preset value." Type="Variable" Display="advanced" Required="false" Mask="false"/>
+  <Config Name="Modifier: Resources" Target="MODIFIER_RESOURCES" Default="" Mode="" Description="muchless, less, more, muchmore, or most. Leave empty for the preset value." Type="Variable" Display="advanced" Required="false" Mask="false"/>
+  <Config Name="Modifier: Raids" Target="MODIFIER_RAIDS" Default="" Mode="" Description="none, muchless, less, more, or muchmore. Leave empty for the preset value." Type="Variable" Display="advanced" Required="false" Mask="false"/>
+  <Config Name="Modifier: Portals" Target="MODIFIER_PORTALS" Default="" Mode="" Description="casual, hard, or veryhard. Leave empty for the preset value." Type="Variable" Display="advanced" Required="false" Mask="false"/>
+  <Config Name="No Map" Target="NO_MAP" Default="false" Mode="" Description="Disable the map (true or false)." Type="Variable" Display="advanced" Required="false" Mask="false">false</Config>
+  <Config Name="Player Events" Target="PLAYER_EVENTS" Default="false" Mode="" Description="Base raid events on players instead of the world (true or false)." Type="Variable" Display="advanced" Required="false" Mask="false">false</Config>
+  <Config Name="Passive Mobs" Target="PASSIVE_MOBS" Default="false" Mode="" Description="Make mobs passive (true or false)." Type="Variable" Display="advanced" Required="false" Mask="false">false</Config>
+  <Config Name="No Build Cost" Target="NO_BUILD_COST" Default="false" Mode="" Description="Disable building costs (true or false)." Type="Variable" Display="advanced" Required="false" Mask="false">false</Config>
+  <Config Name="Fire Hazards" Target="FIRE_HAZARDS" Default="false" Mode="" Description="Let fire spread and set fire to what it touches (true or false)." Type="Variable" Display="advanced" Required="false" Mask="false">false</Config>
+  <Config Name="Save Interval" Target="SAVE_INTERVAL" Default="1800" Mode="" Description="Seconds between world saves." Type="Variable" Display="advanced" Required="false" Mask="false">1800</Config>
+  <Config Name="Keep Backups" Target="KEEP_BACKUPS" Default="4" Mode="" Description="Number of automatic backups to keep." Type="Variable" Display="advanced" Required="false" Mask="false">4</Config>
+  <Config Name="Backups Short" Target="BACKUPS_SHORT" Default="7200" Mode="" Description="Seconds before the first automatic backup." Type="Variable" Display="advanced" Required="false" Mask="false">7200</Config>
+  <Config Name="Backups Long" Target="BACKUPS_LONG" Default="43200" Mode="" Description="Seconds between the later automatic backups." Type="Variable" Display="advanced" Required="false" Mask="false">43200</Config>
+  <Config Name="BepInEx Enabled" Target="BEPINEX_ENABLED" Default="false" Mode="" Description="Enable BepInEx modding (true or false)." Type="Variable" Display="advanced" Required="false" Mask="false">false</Config>
+  <Config Name="BepInExPack Version" Target="BEPINEXPACK_VERSION" Default="5.4.2333" Mode="" Description="BepInExPack_Valheim version to install when BepInEx is needed." Type="Variable" Display="advanced" Required="false" Mask="false">5.4.2333</Config>
+  <Config Name="Mods" Target="MODS" Default="" Mode="" Description="Comma-separated Thunderstore dependency strings, for example Azumatt-AAA_Crafting-2.1.6. If set, BepInEx is enabled." Type="Variable" Display="advanced" Required="false" Mask="false"/>
+  <Config Name="Beta Branch" Target="BETA" Default="public" Mode="" Description="Steam branch to install, for example default_old. Use public for the stable branch." Type="Variable" Display="advanced" Required="false" Mask="false">public</Config>
+  <Config Name="Update On Start" Target="UPDATE_ON_START" Default="false" Mode="" Description="Update the server with SteamCMD on each start (true or false). The server is always installed on first start." Type="Variable" Display="advanced" Required="false" Mask="false">false</Config>
+  <Config Name="Port" Target="PORT" Default="2456" Mode="" Description="Game port the server listens on. The server also uses PORT + 1. Must be the same as Game Port 1." Type="Variable" Display="advanced" Required="false" Mask="false">2456</Config>
+  <Config Name="PUID" Target="PUID" Default="99" Mode="" Description="User ID for file permissions." Type="Variable" Display="advanced" Required="true" Mask="false">99</Config>
+  <Config Name="PGID" Target="PGID" Default="100" Mode="" Description="Group ID for file permissions." Type="Variable" Display="advanced" Required="true" Mask="false">100</Config>
 </Container>
