@@ -11,6 +11,7 @@ A collection of custom Docker templates for Unraid's Community Applications.
 | **Rust** | `GameServers` | A Docker container for running a Rust dedicated server. |
 | **Enshrouded** | `GameServers` | A Docker container for running an Enshrouded dedicated server. |
 | **Hytale** | `GameServers` | A Docker container for running a Hytale dedicated server. |
+| **Crustation** | `GameServers` `Tools` | A control panel for game servers: start, stop and watch your servers from one web interface. |
 
 ## Installation / How to Use
 

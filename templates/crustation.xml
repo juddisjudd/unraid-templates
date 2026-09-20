@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>Crustation</Name>
+  <Repository>ghcr.io/juddisjudd/crustation:latest</Repository>
+  <Registry>https://github.com/juddisjudd/crustation/pkgs/container/crustation</Registry>
+  <Network>bridge</Network>
+  <MyIP/>
+  <Shell>bash</Shell>
+  <Privileged>false</Privileged>
+  <Support>https://github.com/juddisjudd/crustation/issues</Support>
+  <Project>https://github.com/juddisjudd/crustation</Project>
+  <ReadMe>https://github.com/juddisjudd/crustation#readme</ReadMe>
+  <Overview>A control panel for game servers. One binary supervises the server processes and serves a web interface, so there is no Docker socket to expose and everything lives in the three folders you map below.
+
+Early days: sign-in, the server list, start, stop, restart, kill, a live console you can type into, and host and per-process stats all work. Creating a server from the interface does not exist yet, so this suits you if you already have server files on disk or you enjoy watching a project grow. The roadmap is in the GitHub repository.
+
+First sign-in: set the admin username and password below, or leave them empty and read the generated password from first-login.txt in the config folder.
+
+Java 8, 17 and 21 are included for the game servers you run. Forward the game ports your servers need; 25565 and 19132 are mapped by default.</Overview>
+  <Category>GameServers: Tools:</Category>
+  <WebUI>http://[IP]:[PORT:8080]/</WebUI>
+  <TemplateURL>https://raw.githubusercontent.com/juddisjudd/unraid-templates/main/templates/crustation.xml</TemplateURL>
+  <Icon>https://raw.githubusercontent.com/juddisjudd/unraid-templates/refs/heads/main/images/crustation.png</Icon>
+  <ExtraParams>--restart=unless-stopped --stop-timeout=60</ExtraParams>
+  <PostArgs/>
+  <CPUset/>
+  <DateInstalled/>
+  <DonateText>Support me on Ko-fi</DonateText>
+  <DonateLink>https://ko-fi.com/ohitsjudd</DonateLink>
+  <Requires>2 CPU cores and 1 GB RAM for the panel itself, plus whatever the game servers you run need.</Requires>
+  <License>AGPL-3.0</License>
+  <ExtraSearchTerms>minecraft game server control panel manager crafty rust</ExtraSearchTerms>
+
+  <Config Name="Web interface" Target="8080" Default="8080" Mode="tcp" Description="Port for the Crustation web interface." Type="Port" Display="always" Required="true" Mask="false">8080</Config>
+  <Config Name="Minecraft Java" Target="25565" Default="25565" Mode="tcp" Description="Default port for a Minecraft Java server." Type="Port" Display="always" Required="false" Mask="false">25565</Config>
+  <Config Name="Minecraft Bedrock" Target="19132" Default="19132" Mode="udp" Description="Default port for a Minecraft Bedrock server." Type="Port" Display="always" Required="false" Mask="false">19132</Config>
+  <Config Name="Extra server ports" Target="25500-25600" Default="25500-25600" Mode="tcp" Description="Port range for additional game servers." Type="Port" Display="advanced" Required="false" Mask="false">25500-25600</Config>
+
+  <Config Name="Config" Target="/config" Default="/mnt/user/appdata/crustation/config" Mode="rw" Description="Database, settings and the first-login file." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/crustation/config</Config>
+  <Config Name="Servers" Target="/servers" Default="/mnt/user/appdata/crustation/servers" Mode="rw" Description="Where game server files live. Put this on a share with room to grow." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/crustation/servers</Config>
+  <Config Name="Backups" Target="/backups" Default="/mnt/user/backups/crustation" Mode="rw" Description="Where backup archives are written." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/backups/crustation</Config>
+
+  <Config Name="Admin username" Target="CRUSTATION_ADMIN_USERNAME" Default="" Mode="" Description="Username for the first administrator. Only used on the first start." Type="Variable" Display="always" Required="false" Mask="false"/>
+  <Config Name="Admin password" Target="CRUSTATION_ADMIN_PASSWORD" Default="" Mode="" Description="Password for the first administrator, at least 10 characters. Leave empty to have one generated into first-login.txt." Type="Variable" Display="always" Required="false" Mask="true"/>
+  <Config Name="Timezone" Target="TZ" Default="Etc/UTC" Mode="" Description="Timezone for logs and schedules, for example Europe/London." Type="Variable" Display="always" Required="false" Mask="false">Etc/UTC</Config>
+  <Config Name="PUID" Target="PUID" Default="99" Mode="" Description="User id that owns the files. 99 is nobody on Unraid." Type="Variable" Display="advanced" Required="true" Mask="false">99</Config>
+  <Config Name="PGID" Target="PGID" Default="100" Mode="" Description="Group id that owns the files. 100 is users on Unraid." Type="Variable" Display="advanced" Required="true" Mask="false">100</Config>
+  <Config Name="Public URL" Target="CRUSTATION_PUBLIC_URL" Default="" Mode="" Description="Full external address when behind a reverse proxy, for example https://panel.example.com. Turns on secure cookies." Type="Variable" Display="advanced" Required="false" Mask="false"/>
+</Container>
