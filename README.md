@@ -12,6 +12,7 @@ A collection of custom Docker templates for Unraid's Community Applications.
 | **Enshrouded** | `GameServers` | A Docker container for running an Enshrouded dedicated server. |
 | **Hytale** | `GameServers` | A Docker container for running a Hytale dedicated server. |
 | **Crustation** | `GameServers` `Tools` | A control panel for game servers: start, stop and watch your servers from one web interface. |
+| **bawksync** | `Network` `Tools` | End-to-end encrypted sync server for bawkterm, an SSH, SFTP and Remote Desktop client. |
 
 ## Installation / How to Use
 
