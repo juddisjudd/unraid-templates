@@ -10,18 +10,20 @@
   <Support>https://github.com/juddisjudd/crustation/issues</Support>
   <Project>https://github.com/juddisjudd/crustation</Project>
   <ReadMe>https://github.com/juddisjudd/crustation#readme</ReadMe>
-  <Overview>A control panel for game servers. One binary supervises the server processes and serves a web interface, so there is no Docker socket to expose and everything lives in the three folders you map below.
+  <Overview>A control panel for Minecraft and Rust servers. One binary supervises the game servers and serves a web interface, so there is no Docker socket to expose and everything lives in the three folders you map below.
 
-Early days: sign-in, the server list, start, stop, restart, kill, a live console you can type into, and host and per-process stats all work. Creating a server from the interface does not exist yet, so this suits you if you already have server files on disk or you enjoy watching a project grow. The roadmap is in the GitHub repository.
+Create Vanilla, Paper, Purpur, Fabric, NeoForge and Bedrock servers, or Rust through SteamCMD with Oxide or Carbon. Each server gets a live console, players, chat, files, schedules and settings. The roadmap is in the GitHub repository.
 
 First sign-in: set the admin username and password below, or leave them empty and read the generated password from first-login.txt in the config folder.
 
-Java 8, 17 and 21 are included for the game servers you run. Forward the game ports your servers need; 25565 and 19132 are mapped by default.</Overview>
+Java 8, 11, 17, 21 and 25 are included, and each Minecraft server starts on the one its version asks for. Rust needs an amd64 host and around 8 GB of memory per server. Forward the game ports your servers need; the defaults for Minecraft Java, Bedrock and one Rust server are mapped below.
+
+Stopping the container stops every game server first so each can save, which is why the stop timeout in Extra Parameters is 120 seconds.</Overview>
   <Category>GameServers: Tools:</Category>
   <WebUI>http://[IP]:[PORT:8080]/</WebUI>
   <TemplateURL>https://raw.githubusercontent.com/juddisjudd/unraid-templates/main/templates/crustation.xml</TemplateURL>
   <Icon>https://raw.githubusercontent.com/juddisjudd/unraid-templates/refs/heads/main/images/crustation.png</Icon>
-  <ExtraParams>--restart=unless-stopped --stop-timeout=60</ExtraParams>
+  <ExtraParams>--restart=unless-stopped --stop-timeout=120</ExtraParams>
   <PostArgs/>
   <CPUset/>
   <DateInstalled/>
@@ -35,6 +37,9 @@ Java 8, 17 and 21 are included for the game servers you run. Forward the game po
   <Config Name="Minecraft Java" Target="25565" Default="25565" Mode="tcp" Description="Default port for a Minecraft Java server." Type="Port" Display="always" Required="false" Mask="false">25565</Config>
   <Config Name="Minecraft Bedrock" Target="19132" Default="19132" Mode="udp" Description="Default port for a Minecraft Bedrock server." Type="Port" Display="always" Required="false" Mask="false">19132</Config>
   <Config Name="Extra server ports" Target="25500-25600" Default="25500-25600" Mode="tcp" Description="Port range for additional game servers." Type="Port" Display="advanced" Required="false" Mask="false">25500-25600</Config>
+  <Config Name="Rust game" Target="28015" Default="28015" Mode="udp" Description="Game port for the first Rust server." Type="Port" Display="always" Required="false" Mask="false">28015</Config>
+  <Config Name="Rust query" Target="28017" Default="28017" Mode="udp" Description="Steam query port for the first Rust server, two above its game port." Type="Port" Display="always" Required="false" Mask="false">28017</Config>
+  <Config Name="Rust+ app" Target="28083" Default="28083" Mode="tcp" Description="Port the Rust+ phone app reaches the first Rust server on, the game port plus 68." Type="Port" Display="advanced" Required="false" Mask="false">28083</Config>
 
   <Config Name="Config" Target="/config" Default="/mnt/user/appdata/crustation/config" Mode="rw" Description="Database, settings and the first-login file." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/crustation/config</Config>
   <Config Name="Servers" Target="/servers" Default="/mnt/user/appdata/crustation/servers" Mode="rw" Description="Where game server files live. Put this on a share with room to grow." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/crustation/servers</Config>
