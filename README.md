@@ -13,6 +13,7 @@ A collection of custom Docker templates for Unraid's Community Applications.
 | **Hytale** | `GameServers` | A Docker container for running a Hytale dedicated server. |
 | **Crustation** | `GameServers` `Tools` | A control panel for game servers: start, stop and watch your servers from one web interface. |
 | **bawksync** | `Network` `Tools` | End-to-end encrypted sync server for bawkterm, an SSH, SFTP and Remote Desktop client. |
+| **Lore Server** | `Productivity` `Tools` | Server for Lore, Epic Games' open source version control system. |
 
 ## Installation / How to Use
 
@@ -39,3 +40,4 @@ Special thanks to the original creators of the Docker images used in these templ
 - **Rust**: Docker image provided by [indifferentbroccoli](https://github.com/indifferentbroccoli/rust-server-docker) ([Docker Hub](https://hub.docker.com/r/indifferentbroccoli/rust-server-docker)).
 - **Enshrouded**: Docker image provided by [indifferentbroccoli](https://github.com/indifferentbroccoli/enshrouded-server-docker) ([Docker Hub](https://hub.docker.com/r/indifferentbroccoli/enshrouded-server-docker)).
 - **Hytale**: Docker image provided by [indifferentbroccoli](https://github.com/indifferentbroccoli/hytale-server-docker) ([Docker Hub](https://hub.docker.com/r/indifferentbroccoli/hytale-server-docker)).
+- **Lore Server**: Docker image provided by [Epic Games](https://github.com/EpicGames/lore) ([GitHub Container Registry](https://github.com/EpicGames/lore/pkgs/container/lore%2Floreserver)).

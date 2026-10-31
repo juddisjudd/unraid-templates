@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>lore-server</Name>
+  <Repository>ghcr.io/epicgames/lore/loreserver:latest</Repository>
+  <Registry>https://github.com/EpicGames/lore/pkgs/container/lore%2Floreserver</Registry>
+  <Network>bridge</Network>
+  <MyIP/>
+  <Shell>bash</Shell>
+  <Privileged>false</Privileged>
+  <Support>https://github.com/juddisjudd/unraid-templates/issues</Support>
+  <Project>https://epicgames.github.io/lore/</Project>
+  <ReadMe>https://github.com/EpicGames/lore/blob/main/lore-server/DOCKER.md</ReadMe>
+  <Overview>Lore is an open source version control system from Epic Games. This is the Lore Server: the central place your team pushes to and clones from.
+
+Auth is off. Anyone who can reach this server can read, write and delete every repository. Keep it on your LAN. Do not forward its ports.
+
+Connect with the lore CLI and the lore:// scheme. Example: lore repository create lore://[your Unraid IP]:41337/my-project
+
+The server makes a new self-signed certificate each time it starts. lore:// accepts it. lores:// rejects it.
+
+To change a server setting, add a variable named LORE__ followed by the setting path, such as LORE__SERVER__HTTP__PORT. See the Lore Server config reference for every setting.
+
+Docker image by Epic Games.</Overview>
+  <Category>Productivity: Tools:Utilities</Category>
+  <WebUI/>
+  <TemplateURL>https://raw.githubusercontent.com/juddisjudd/unraid-templates/main/templates/lore-server.xml</TemplateURL>
+  <Icon>https://raw.githubusercontent.com/juddisjudd/unraid-templates/refs/heads/main/images/lore-server.png</Icon>
+  <ExtraParams>--restart=unless-stopped --stop-timeout=30</ExtraParams>
+  <PostArgs/>
+  <CPUset/>
+  <DateInstalled/>
+  <DonateText>Support me on Ko-fi</DonateText>
+  <DonateLink>https://ko-fi.com/ohitsjudd</DonateLink>
+  <License>MIT</License>
+  <ExtraSearchTerms>lore loreserver epic games version control vcs git perforce source control unreal</ExtraSearchTerms>
+
+  <Config Name="gRPC port" Target="41337" Default="41337" Mode="tcp" Description="gRPC, for Lore services. Use the same host port as the QUIC port." Type="Port" Display="always" Required="true" Mask="false">41337</Config>
+  <Config Name="QUIC port" Target="41337" Default="41337" Mode="udp" Description="QUIC, for pushes and clones. Use the same host port as the gRPC port." Type="Port" Display="always" Required="true" Mask="false">41337</Config>
+  <Config Name="HTTP port" Target="41339" Default="41339" Mode="tcp" Description="Health check at /health_check." Type="Port" Display="always" Required="true" Mask="false">41339</Config>
+
+  <Config Name="Data" Target="/data" Default="/mnt/user/appdata/lore-server" Mode="rw" Description="Repository stores. Put this on a share with plenty of space." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/lore-server</Config>
+
+  <Config Name="Log level" Target="RUST_LOG" Default="info" Mode="" Description="error, warn, info, debug or trace." Type="Variable" Display="advanced" Required="false" Mask="false">info</Config>
+</Container>
