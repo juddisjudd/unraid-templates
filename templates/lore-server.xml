@@ -12,13 +12,15 @@
   <ReadMe>https://github.com/EpicGames/lore/blob/main/lore-server/DOCKER.md</ReadMe>
   <Overview>Lore is an open source version control system from Epic Games. This is the Lore Server: the central place your team pushes to and clones from.
 
-Auth is off. Anyone who can reach this server can read, write and delete every repository. Keep it on your LAN. Do not forward its ports.
+Auth is off by default. Anyone who can reach this server can read, write and delete every repository. Keep it on your LAN. Do not forward its ports.
 
 Connect with the lore CLI and the lore:// scheme. Example: lore repository create lore://[your Unraid IP]:41337/my-project
 
-The server makes a new self-signed certificate each time it starts. lore:// accepts it. lores:// rejects it.
+The Repositories folder holds all file content, history and branches. Back it up to back up every repository. The Config folder holds optional settings files. It can stay empty.
 
-To change a server setting, add a variable named LORE__ followed by the setting path, such as LORE__SERVER__HTTP__PORT. See the Lore Server config reference for every setting.
+To change one setting, add a variable named LORE__ followed by the setting path, such as LORE__SERVER__HTTP__PORT. For settings that need a file, such as a certificate or login, create local.toml in the Config folder and restart the container. Paths in local.toml start with /config. See the Lore Server config reference for every setting.
+
+The server makes a new self-signed certificate each time it starts. lore:// accepts it. lores:// rejects it. To use lores://, put a certificate for your Unraid IP or host name in the Config folder. Your computers must trust it. Set it under both [server.quic.certificate] and [server.grpc.certificate] in local.toml. Then connect with lores:// only.
 
 Docker image by Epic Games.</Overview>
   <Category>Productivity: Tools:Utilities</Category>
@@ -36,9 +38,13 @@ Docker image by Epic Games.</Overview>
 
   <Config Name="gRPC port" Target="41337" Default="41337" Mode="tcp" Description="gRPC, for Lore services. Use the same host port as the QUIC port." Type="Port" Display="always" Required="true" Mask="false">41337</Config>
   <Config Name="QUIC port" Target="41337" Default="41337" Mode="udp" Description="QUIC, for pushes and clones. Use the same host port as the gRPC port." Type="Port" Display="always" Required="true" Mask="false">41337</Config>
-  <Config Name="HTTP port" Target="41339" Default="41339" Mode="tcp" Description="Health check at /health_check." Type="Port" Display="always" Required="true" Mask="false">41339</Config>
+  <Config Name="HTTP port" Target="41339" Default="41339" Mode="tcp" Description="Health check at /health_check, and HTTP access to file content." Type="Port" Display="always" Required="true" Mask="false">41339</Config>
 
-  <Config Name="Data" Target="/data" Default="/mnt/user/appdata/lore-server" Mode="rw" Description="Repository stores. Put this on a share with plenty of space." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/lore-server</Config>
+  <Config Name="Repositories" Target="/data" Default="/mnt/user/appdata/lore-server/repositories" Mode="rw" Description="All repository data. The immutable folder holds file content and history. The mutable folder holds branches. Big projects need a lot of space, so you can use a share such as /mnt/user/lore." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/lore-server/repositories</Config>
+  <Config Name="Config" Target="/config" Default="/mnt/user/appdata/lore-server/config" Mode="ro" Description="Optional. Create local.toml here for settings that need a file, such as a certificate or login. Paths in it start with /config. Can stay empty." Type="Path" Display="always" Required="false" Mask="false">/mnt/user/appdata/lore-server/config</Config>
 
   <Config Name="Log level" Target="RUST_LOG" Default="info" Mode="" Description="error, warn, info, debug or trace." Type="Variable" Display="advanced" Required="false" Mask="false">info</Config>
+  <Config Name="Config path" Target="LORE_CONFIG_PATH" Default="/config" Mode="" Description="Where the server looks for local.toml. Keep as /config." Type="Variable" Display="advanced-hide" Required="true" Mask="false">/config</Config>
+  <Config Name="Content store path" Target="LORE__IMMUTABLE_STORE__LOCAL__PATH" Default="/data" Mode="" Description="Keeps file content and history in the Repositories folder. Keep as /data." Type="Variable" Display="advanced-hide" Required="true" Mask="false">/data</Config>
+  <Config Name="Branch store path" Target="LORE__MUTABLE_STORE__LOCAL__PATH" Default="/data" Mode="" Description="Keeps branches in the Repositories folder. Keep as /data." Type="Variable" Display="advanced-hide" Required="true" Mask="false">/data</Config>
 </Container>
