@@ -14,6 +14,8 @@
 
 Auth is off by default. Anyone who can reach this server can read, write and delete every repository. Keep it on your LAN. Do not forward its ports.
 
+With auth off, Lore records every caller as &lt;unknown&gt;. Set Trust unsigned identity to true to record the names people give in the lore CLI and the Lore Web UI. Branches, locks and repositories then show who made them. Lore does not check these names, so anyone can claim any name.
+
 Connect with the lore CLI and the lore:// scheme. Example: lore repository create lore://[your Unraid IP]:41337/my-project
 
 The Repositories folder holds all file content, history and branches. Back it up to back up every repository. The Config folder holds optional settings files. It can stay empty.
@@ -42,6 +44,8 @@ Docker image by Epic Games.</Overview>
 
   <Config Name="Repositories" Target="/data" Default="/mnt/user/appdata/lore-server/repositories" Mode="rw" Description="All repository data. The immutable folder holds file content and history. The mutable folder holds branches. Big projects need a lot of space, so you can use a share such as /mnt/user/lore." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/lore-server/repositories</Config>
   <Config Name="Config" Target="/config" Default="/mnt/user/appdata/lore-server/config" Mode="ro" Description="Optional. Create local.toml here for settings that need a file, such as a certificate or login. Paths in it start with /config. Can stay empty." Type="Path" Display="always" Required="false" Mask="false">/mnt/user/appdata/lore-server/config</Config>
+
+  <Config Name="Trust unsigned identity" Target="LORE__SERVER__TRUST_UNSIGNED_IDENTITY" Default="false" Mode="" Description="true or false. true records the names people give in the lore CLI and the Lore Web UI. Lore does not check them. Set false if you turn on sign-in in local.toml: the server does not start with both. Overrides the same setting in local.toml." Type="Variable" Display="always" Required="true" Mask="false">false</Config>
 
   <Config Name="Log level" Target="RUST_LOG" Default="info" Mode="" Description="error, warn, info, debug or trace." Type="Variable" Display="advanced" Required="false" Mask="false">info</Config>
   <Config Name="Config path" Target="LORE_CONFIG_PATH" Default="/config" Mode="" Description="Where the server looks for local.toml. Keep as /config." Type="Variable" Display="advanced-hide" Required="true" Mask="false">/config</Config>
