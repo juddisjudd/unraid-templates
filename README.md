@@ -14,7 +14,7 @@ A collection of custom Docker templates for Unraid's Community Applications.
 | **Crustation** | `GameServers` `Tools` | A control panel for game servers: start, stop and watch your servers from one web interface. |
 | **bawksync** | `Network` `Tools` | End-to-end encrypted sync server for bawkterm, an SSH, SFTP and Remote Desktop client. |
 | **Lore Server** | `Productivity` `Tools` | Server for Lore, Epic Games' open source version control system. |
-| **Lore Web UI** | `Productivity` `Tools` | Web interface for Lore servers: browse repositories, history, files and branches. |
+| **Lore Web UI** | `Productivity` `Tools` | Web interface for Lore servers: browse repositories, history, files, branches and locks, with sign-in accounts. |
 
 ## Installation / How to Use
 

@@ -10,7 +10,7 @@
   <Support>https://github.com/juddisjudd/lore-webgui/issues</Support>
   <Project>https://github.com/juddisjudd/lore-webgui</Project>
   <ReadMe>https://github.com/juddisjudd/lore-webgui/blob/main/README.md</ReadMe>
-  <Overview>A web interface for Lore, the open source version control system from Epic Games. Browse repositories, read history, view files and diffs, and manage branches from a browser.
+  <Overview>A web interface for Lore, the open source version control system from Epic Games. Browse repositories, history, files and diffs. Compare branches, see file locks, and create repositories and branches. Open pages update when someone pushes.
 
 You need a running Lore Server. The Lore Server template in this repository sets one up.
 
@@ -18,12 +18,18 @@ Set Lore Server host to the IP or host name of your Lore Server. If it runs on t
 
 The web UI connects to the Lore Server on port 41337 for gRPC and port 41339 for file content. If you changed those host ports, add the variables LORE_GRPC_URL and LORE_HTTP_URL, such as http://[your Unraid IP]:41337.
 
-There is no sign-in. Anyone who can open this page can read every repository, create repositories and branches, and delete branches. Keep it on your LAN. Do not forward its port. For access from outside, put it behind a reverse proxy that requires sign-in.</Overview>
+First start: open the container's log and copy the setup code. Open the web UI, paste the code, and create the admin account. The admin adds other people on the Users page. Viewers browse. Members also create repositories and branches. Admins also manage users.
+
+To show who created each branch and repository, set Trust unsigned identity to true in the Lore Server template. Without it, Lore records web UI actions as &lt;unknown&gt;.
+
+The Data folder holds the accounts database. Back it up to keep your accounts.
+
+Keep the web UI on your LAN. Do not forward its port. Accounts protect the web UI only. Anyone who can reach the Lore Server can still use the lore CLI. For access from outside, use a VPN.</Overview>
   <Category>Productivity: Tools:Utilities</Category>
   <WebUI>http://[IP]:[PORT:7337]/</WebUI>
   <TemplateURL>https://raw.githubusercontent.com/juddisjudd/unraid-templates/main/templates/lore-webgui.xml</TemplateURL>
   <Icon>https://raw.githubusercontent.com/juddisjudd/unraid-templates/refs/heads/main/images/lore-webgui.png</Icon>
-  <ExtraParams>--restart=unless-stopped</ExtraParams>
+  <ExtraParams>--restart=unless-stopped --user=99:100</ExtraParams>
   <PostArgs/>
   <CPUset/>
   <DateInstalled/>
@@ -34,8 +40,11 @@ There is no sign-in. Anyone who can open this page can read every repository, cr
 
   <Config Name="Web UI port" Target="7337" Default="7337" Mode="tcp" Description="Port the web UI listens on." Type="Port" Display="always" Required="true" Mask="false">7337</Config>
 
+  <Config Name="Data" Target="/data" Default="/mnt/user/appdata/lore-webgui" Mode="rw" Description="Accounts database. Without it, accounts are lost each time the container is updated." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/lore-webgui</Config>
+
   <Config Name="Lore Server host" Target="LORE_HOST" Default="" Mode="" Description="IP or host name of your Lore Server, such as 192.168.1.10. If it runs on this Unraid server, use your Unraid IP. Not localhost." Type="Variable" Display="always" Required="true" Mask="false"/>
-  <Config Name="Lore token" Target="LORE_TOKEN" Default="" Mode="" Description="Optional. Leave empty unless your Lore Server requires sign-in. Every visitor uses this token, so give it the least access that works." Type="Variable" Display="always" Required="false" Mask="true"/>
+  <Config Name="Lore token" Target="LORE_TOKEN" Default="" Mode="" Description="Optional. Leave empty unless your Lore Server requires sign-in. Every signed-in person uses this token, so give it the least access that works. Lore then records the token's name, not each person's." Type="Variable" Display="always" Required="false" Mask="true"/>
+  <Config Name="Sign-in" Target="AUTH" Default="accounts" Mode="" Description="accounts requires sign-in. off gives everyone full access, with no sign-in. Use off only behind a reverse proxy that signs people in." Type="Variable" Display="advanced" Required="false" Mask="false">accounts</Config>
   <Config Name="Max diff size" Target="MAX_DIFF_BYTES" Default="2097152" Mode="" Description="Files larger than this many bytes show no diff. 2097152 is 2 MiB." Type="Variable" Display="advanced" Required="false" Mask="false">2097152</Config>
   <Config Name="History concurrency" Target="HISTORY_CONCURRENCY" Default="16" Mode="" Description="Parallel revision lookups for each page of history." Type="Variable" Display="advanced" Required="false" Mask="false">16</Config>
 </Container>
