@@ -14,6 +14,7 @@ A collection of custom Docker templates for Unraid's Community Applications.
 | **Crustation** | `GameServers` `Tools` | A control panel for game servers: start, stop and watch your servers from one web interface. |
 | **bawksync** | `Network` `Tools` | End-to-end encrypted sync server for bawkterm, an SSH, SFTP and Remote Desktop client. |
 | **Lore Server** | `Productivity` `Tools` | Server for Lore, Epic Games' open source version control system. |
+| **Lore Web UI** | `Productivity` `Tools` | Web interface for Lore servers: browse repositories, history, files and branches. |
 
 ## Installation / How to Use
 
@@ -41,3 +42,4 @@ Special thanks to the original creators of the Docker images used in these templ
 - **Enshrouded**: Docker image provided by [indifferentbroccoli](https://github.com/indifferentbroccoli/enshrouded-server-docker) ([Docker Hub](https://hub.docker.com/r/indifferentbroccoli/enshrouded-server-docker)).
 - **Hytale**: Docker image provided by [indifferentbroccoli](https://github.com/indifferentbroccoli/hytale-server-docker) ([Docker Hub](https://hub.docker.com/r/indifferentbroccoli/hytale-server-docker)).
 - **Lore Server**: Docker image provided by [Epic Games](https://github.com/EpicGames/lore) ([GitHub Container Registry](https://github.com/EpicGames/lore/pkgs/container/lore%2Floreserver)).
+- **Lore Web UI**: Docker image provided by [juddisjudd](https://github.com/juddisjudd/lore-webgui) ([GitHub Container Registry](https://github.com/juddisjudd/lore-webgui/pkgs/container/lore-webgui)).

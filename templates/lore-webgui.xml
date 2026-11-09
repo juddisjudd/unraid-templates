@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>lore-webgui</Name>
+  <Repository>ghcr.io/juddisjudd/lore-webgui:latest</Repository>
+  <Registry>https://github.com/juddisjudd/lore-webgui/pkgs/container/lore-webgui</Registry>
+  <Network>bridge</Network>
+  <MyIP/>
+  <Shell>sh</Shell>
+  <Privileged>false</Privileged>
+  <Support>https://github.com/juddisjudd/lore-webgui/issues</Support>
+  <Project>https://github.com/juddisjudd/lore-webgui</Project>
+  <ReadMe>https://github.com/juddisjudd/lore-webgui/blob/main/README.md</ReadMe>
+  <Overview>A web interface for Lore, the open source version control system from Epic Games. Browse repositories, read history, view files and diffs, and manage branches from a browser.
+
+You need a running Lore Server. The Lore Server template in this repository sets one up.
+
+Set Lore Server host to the IP or host name of your Lore Server. If it runs on this Unraid server, use your Unraid IP. Do not use localhost: inside the container, it points to the container itself. Clone commands in the web UI also show this address.
+
+The web UI connects to the Lore Server on port 41337 for gRPC and port 41339 for file content. If you changed those host ports, add the variables LORE_GRPC_URL and LORE_HTTP_URL, such as http://[your Unraid IP]:41337.
+
+There is no sign-in. Anyone who can open this page can read every repository, create repositories and branches, and delete branches. Keep it on your LAN. Do not forward its port. For access from outside, put it behind a reverse proxy that requires sign-in.</Overview>
+  <Category>Productivity: Tools:Utilities</Category>
+  <WebUI>http://[IP]:[PORT:7337]/</WebUI>
+  <TemplateURL>https://raw.githubusercontent.com/juddisjudd/unraid-templates/main/templates/lore-webgui.xml</TemplateURL>
+  <Icon>https://raw.githubusercontent.com/juddisjudd/unraid-templates/refs/heads/main/images/lore-webgui.png</Icon>
+  <ExtraParams>--restart=unless-stopped</ExtraParams>
+  <PostArgs/>
+  <CPUset/>
+  <DateInstalled/>
+  <DonateText>Support me on Ko-fi</DonateText>
+  <DonateLink>https://ko-fi.com/ohitsjudd</DonateLink>
+  <License>MIT</License>
+  <ExtraSearchTerms>lore webgui web ui epic games version control vcs git perforce source control unreal browser</ExtraSearchTerms>
+
+  <Config Name="Web UI port" Target="7337" Default="7337" Mode="tcp" Description="Port the web UI listens on." Type="Port" Display="always" Required="true" Mask="false">7337</Config>
+
+  <Config Name="Lore Server host" Target="LORE_HOST" Default="" Mode="" Description="IP or host name of your Lore Server, such as 192.168.1.10. If it runs on this Unraid server, use your Unraid IP. Not localhost." Type="Variable" Display="always" Required="true" Mask="false"/>
+  <Config Name="Lore token" Target="LORE_TOKEN" Default="" Mode="" Description="Optional. Leave empty unless your Lore Server requires sign-in. Every visitor uses this token, so give it the least access that works." Type="Variable" Display="always" Required="false" Mask="true"/>
+  <Config Name="Max diff size" Target="MAX_DIFF_BYTES" Default="2097152" Mode="" Description="Files larger than this many bytes show no diff. 2097152 is 2 MiB." Type="Variable" Display="advanced" Required="false" Mask="false">2097152</Config>
+  <Config Name="History concurrency" Target="HISTORY_CONCURRENCY" Default="16" Mode="" Description="Parallel revision lookups for each page of history." Type="Variable" Display="advanced" Required="false" Mask="false">16</Config>
+</Container>
